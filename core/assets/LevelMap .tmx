@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="30" tilewidth="21" tileheight="21" nextobjectid="27">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="30" tilewidth="21" tileheight="21" nextobjectid="29">
  <tileset firstgid="1" name="spritesheet" tilewidth="21" tileheight="21" spacing="2" margin="2" tilecount="900" columns="30">
   <image source="../../../../../Downloads/Platformer Art Pixel Redux 3/spritesheet.png" width="692" height="692"/>
  </tileset>
@@ -108,12 +108,14 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="ground">
+  <object id="28" x="0" y="0" width="4200" height="441"/>
+ </objectgroup>
  <objectgroup name="collisions">
   <object id="18" name="coll1" x="716" y="357" width="82" height="85"/>
   <object id="20" name="coll2" x="1449.89" y="356.862" width="84.1656" height="85.2878"/>
   <object id="21" name="coll3" x="2186.06" y="356.862" width="80.799" height="85.2878"/>
   <object id="22" name="coll4" x="2919.99" y="356.862" width="80.799" height="85.2878"/>
   <object id="23" name="coll5" x="3657.28" y="357.985" width="78.5546" height="85.2878"/>
-  <object id="26" x="1.22579" y="1.22579" width="4200" height="441"/>
  </objectgroup>
 </map>

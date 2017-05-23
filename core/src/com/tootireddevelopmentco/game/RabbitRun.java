@@ -7,13 +7,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class RabbitRun extends Game {
-	SpriteBatch batch; 
-	Texture img;
+	public SpriteBatch batch; 
+	public OrhtographicCamera camera; 
 	public static final String TITLE = "Rabbit Run"; 
-	
 	
 	@Override
 	public void create () {
+		batch = new SpriteBatch (); 
+		cam = new OrthographicCamera (); 
 		setScreen (new Splash ());
 	}
 
@@ -24,7 +25,7 @@ public class RabbitRun extends Game {
 	
 	@Override
 	public void dispose () {
-		super.dispose ();
+		batch.dispose ();
 	}
 
 }

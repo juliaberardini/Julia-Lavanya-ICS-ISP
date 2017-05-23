@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="30" tilewidth="21" tileheight="21" nextobjectid="37">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="30" tilewidth="21" tileheight="21" nextobjectid="38">
  <tileset firstgid="1" name="spritesheet" tilewidth="21" tileheight="21" spacing="2" margin="2" tilecount="900" columns="30">
   <image source="../../../../../Downloads/Platformer Art Pixel Redux 3/spritesheet.png" width="692" height="692"/>
  </tileset>
  <imagelayer name="background">
-  <image source="../../../mountainback.png" width="4200" height="420"/>
+  <image source="mountainback.png" width="4200" height="420"/>
  </imagelayer>
  <layer name="ground" width="200" height="30">
   <data encoding="csv">
@@ -80,6 +80,8 @@
   <object id="14" name="coll5" x="3655.87" y="357.287" width="80.9717" height="84.0081"/>
   <object id="10" name="coll1" x="715.587" y="357.287" width="78.9474" height="82.996"/>
   <object id="12" name="coll3" x="2186.23" y="356.275" width="78.9474" height="85.0202"/>
-  <object id="34" name="ground" x="1.34264" y="1.34264" width="4200" height="441"/>
+ </objectgroup>
+ <objectgroup name="ground">
+  <object id="37" x="0" y="0" width="4200" height="441"/>
  </objectgroup>
 </map>
