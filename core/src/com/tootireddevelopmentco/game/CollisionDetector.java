@@ -55,6 +55,7 @@ public class CollisionDetector extends ApplicationAdapter {
 	    
 		for (int i = 0; i< obstacles.getCount (); i++ )
 		{
+			System.out.println ("hi");
             BodyDef collDef = new BodyDef();
             collDef.fixedRotation = true;
             collDef.type = BodyDef.BodyType.StaticBody;
@@ -80,18 +81,15 @@ public class CollisionDetector extends ApplicationAdapter {
             shape2.dispose();
 		}
 	}
-		
 		private PolygonShape getRectProp (RectangleMapObject obj)
 		{
 			    Rectangle rect = (obj.getRectangle ());
 			    PolygonShape poly = new PolygonShape();
-		        Vector2 size = new Vector2((rect.x + rect.width * 0.5f) / 20f,
-		                (rect.y + rect.height * 0.5f) / 20f);
-		        poly.setAsBox(rect.width * 0.5f / 20f,
-		                rect.height * 0.5f / 20f,
-		                size,
-		                0.0f);
-		        ;
+		        Vector2 size = new Vector2((rect.x + rect.width) / Constants.PIXELS_TO_METERS, 
+		        		(rect.y + rect.height) / Constants.PIXELS_TO_METERS);
+		        poly.setAsBox(rect.width / Constants.PIXELS_TO_METERS,
+		                rect.height / Constants.PIXELS_TO_METERS,
+		                size,0.0f);
 				return poly;
 		}
 		

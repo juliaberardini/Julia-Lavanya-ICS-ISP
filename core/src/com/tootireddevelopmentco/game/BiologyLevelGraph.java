@@ -36,6 +36,7 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 	world = new World (new Vector2(0f,-9.8f), false);  
 	map = new TmxMapLoader ().load ("LevelMap.tmx"); 
 	renderer = new OrthogonalTiledMapRenderer(map);
+	detector= new CollisionDetector (world, "LevelMap.tmx", game);
     player = new Player(world, game, strtX, strtY, name, score);
     player.changeJump(true);
     debugRenderer = new Box2DDebugRenderer();
