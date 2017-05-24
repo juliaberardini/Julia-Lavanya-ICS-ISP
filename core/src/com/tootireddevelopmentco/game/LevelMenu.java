@@ -54,7 +54,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 0, 420));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 0, 179));
 					}
 				})));
 			}

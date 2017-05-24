@@ -1,5 +1,6 @@
 package com.tootireddevelopmentco.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
@@ -65,7 +66,7 @@ public void changeJump (boolean type)
 
 public void update (float delta) { 
 	sprite.setPosition((body.getPosition().x * Constants.PIXELS_TO_METERS) - sprite.getWidth() / 2,
-            ((body.getPosition().y * Constants.PIXELS_TO_METERS) - sprite.getHeight() / 2));
+            ((body.getPosition().y *Constants.PIXELS_TO_METERS) - sprite.getHeight() / 2));
 }
 
 @Override
@@ -117,6 +118,7 @@ public boolean scrolled(int amount) {
 
 public void draw(SpriteBatch batch) {
 	// TODO Auto-generated method stub
+	 update(Gdx.graphics.getDeltaTime());
 	 sprite.draw(batch);	
 }
 

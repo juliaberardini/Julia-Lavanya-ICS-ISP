@@ -31,11 +31,11 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 {
 	this.game=game; 
 	game.camera.setToOrtho(false);
-	game.camera.position.set (Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
+	game.camera.position.set (0, 0, 0);
 	game.camera.update();
 	world = new World (new Vector2(0f,-9.8f), false);  
 	map = new TmxMapLoader ().load ("LevelMap.tmx"); 
-	renderer = new OrthogonalTiledMapRenderer(map, 1/21f);
+	renderer = new OrthogonalTiledMapRenderer(map);
     player = new Player(world, game, strtX, strtY, name, score);
     player.changeJump(true);
     debugRenderer = new Box2DDebugRenderer();
@@ -54,7 +54,7 @@ public void render(float delta) {
 	Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    game.camera.position.set(new Vector3(player.getX(), player.getY(), 0));
+    game.camera.position.set(new Vector3(player.getX()+472, player.getY()+136, 0));
     game.camera.update();
     world.step(1f / 60f, 6, 2);
     debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS,
@@ -64,7 +64,6 @@ public void render(float delta) {
     renderer.render();
     game.batch.begin();
     player.draw(game.batch);
- 
     game.batch.end();
 
     debugRenderer.render(world, debugMatrix);
