@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="30" tilewidth="21" tileheight="21" nextobjectid="29">
  <tileset firstgid="1" name="spritesheet" tilewidth="21" tileheight="21" spacing="2" margin="2" tilecount="900" columns="30">
-  <image source="../../../../../Downloads/Platformer Art Pixel Redux 3/spritesheet.png" width="692" height="692"/>
+  <image source="spritesheet.png" width="692" height="692"/>
  </tileset>
  <imagelayer name="Image Layer 1">
   <image source="backgronud.png" width="4200" height="420"/>

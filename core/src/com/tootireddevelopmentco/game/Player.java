@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -31,13 +32,13 @@ public Player (World world, final RabbitRun game,  float startX, float StartY, S
 	bodDef.type = BodyDef.BodyType.DynamicBody; 
 	bodDef.fixedRotation = true; 
 	bodDef.position.set ((startX + sprite.getWidth () /2)/ Constants.PIXELS_TO_METERS, (StartY + sprite.getHeight () /2) / Constants.PIXELS_TO_METERS);
-
+	body = world.createBody(bodDef);
 	PolygonShape shape = new PolygonShape (); 
 	shape.setAsBox ((sprite.getWidth ()/2) / Constants.PIXELS_TO_METERS, (sprite.getHeight ()/2)/Constants.PIXELS_TO_METERS);
 
 	FixtureDef def = new FixtureDef (); 
 	def.shape = shape; 
-	def.density = 0.3f; 
+	def.density = 1f; 
 	body.createFixture(def); 
 	shape.dispose();
 }
@@ -57,9 +58,9 @@ public String toString (Player player)
 	return name + "     " + score ;
 }
 
-public void changeJump ()
+public void changeJump (boolean type)
 {
-	canJump = !canJump; 
+	canJump = type; 
 }
 
 public void update (float delta) { 
@@ -112,5 +113,25 @@ public boolean mouseMoved(int screenX, int screenY) {
 @Override
 public boolean scrolled(int amount) {
 	return false;
+}
+
+public void draw(SpriteBatch batch) {
+	// TODO Auto-generated method stub
+	 sprite.draw(batch);	
+}
+
+public float getX() {
+	// TODO Auto-generated method stub
+	return sprite.getX();
+}
+
+public float getY() {
+	// TODO Auto-generated method stub
+	return sprite.getY (); 
+}
+
+public Texture getTexture() {
+	// TODO Auto-generated method stub
+	return sprite.getTexture (); 
 }
 }

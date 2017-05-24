@@ -18,8 +18,29 @@ public class Splash implements Screen {
 	private SpriteBatch batch;
 	private Sprite splash;
 	private TweenManager tweenManager;
+	final RabbitRun game; 
 
-	@Override
+	public Splash (final RabbitRun game)
+	{
+		this.game= game; 
+		Gdx.graphics.setVSync(true);
+		batch = new SpriteBatch();
+
+		tweenManager = new TweenManager();
+		Tween.registerAccessor (Sprite.class, new SpriteAccessor ());
+
+		splash = new Sprite(new Texture ("background.png"));
+
+		Tween.set (splash, SpriteAccessor.ALPHA).target(0).start(tweenManager); 
+		Tween.to(splash, SpriteAccessor.ALPHA, 1.5f).target(1).repeatYoyo(1, .5f).setCallback(new TweenCallback () {
+
+			@Override
+			public void onEvent(int arg0, BaseTween<?> arg1) {
+				((Game) Gdx.app.getApplicationListener()).setScreen (new MainMenu (game));
+			}
+			}).start (tweenManager);
+		tweenManager.update (Float.MIN_VALUE); 
+	}
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -36,24 +57,7 @@ public class Splash implements Screen {
 	}
 
 	public void show() {
-		// apply preferences
-		Gdx.graphics.setVSync(true);
-		batch = new SpriteBatch();
-
-		tweenManager = new TweenManager();
-		Tween.registerAccessor (Sprite.class, new SpriteAccessor ());
-
-		splash = new Sprite(new Texture ("background.png"));
-
-		Tween.set (splash, SpriteAccessor.ALPHA).target(0).start(tweenManager); 
-		Tween.to(splash, SpriteAccessor.ALPHA, 1.5f).target(1).repeatYoyo(1, .5f).setCallback(new TweenCallback () {
-
-			@Override
-			public void onEvent(int arg0, BaseTween<?> arg1) {
-				((Game) Gdx.app.getApplicationListener()).setScreen (new MainMenu ());
-			}
-			}).start (tweenManager);
-		tweenManager.update (Float.MIN_VALUE); 
+		
 }
 
 	@Override

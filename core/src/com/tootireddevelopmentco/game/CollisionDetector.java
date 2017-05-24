@@ -34,7 +34,7 @@ public class CollisionDetector extends ApplicationAdapter {
 		BodyDef groundDef = new BodyDef ();
 		groundDef.fixedRotation =true; 
 		groundDef.type= BodyDef.BodyType.StaticBody; 
-		groundDef.position.set(new Vector2(0, -9.8f));
+		groundDef.position.set(new Vector2(0, 0f));
 		ground = world.createBody(groundDef); 
 		Shape shape; 
 		MapObject m= wall.get(0); 
@@ -58,7 +58,7 @@ public class CollisionDetector extends ApplicationAdapter {
             BodyDef collDef = new BodyDef();
             collDef.fixedRotation = true;
             collDef.type = BodyDef.BodyType.StaticBody;
-            collDef.position.set(new Vector2(0, -9.8f));
+            collDef.position.set(new Vector2(0, 0f));
             obstacleArr[i] = world.createBody(collDef);
             MapObject m2 = obstacles.get(i);
             Shape shape2; 

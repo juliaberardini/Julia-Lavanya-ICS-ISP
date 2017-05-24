@@ -26,10 +26,12 @@ public class LevelMenu implements Screen {
 	private Skin skin; 
 	private Table table; 
 	private TweenManager tweenManager; 
+	public final RabbitRun game; 
 	private Stage stage; 
 
-	@Override
-	public void show() {
+	public LevelMenu (final RabbitRun game)
+	{
+		this.game= game; 
 		stage= new Stage (); 
 		Gdx.input.setInputProcessor(stage);
 
@@ -52,7 +54,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph());
+						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 0, 420));
 					}
 				})));
 			}
@@ -99,7 +101,7 @@ public class LevelMenu implements Screen {
 				stage.addAction(sequence(moveTo(0, -stage.getHeight(), .5f), run(new Runnable() {
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+						((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu(game));
 					}
 				})));
 			}
@@ -136,7 +138,11 @@ public class LevelMenu implements Screen {
 		Tween.from(table, ActorAccessor.Y, .75f).target(Gdx.graphics.getHeight() / 8).start(tweenManager);
 
 		tweenManager.update(Gdx.graphics.getDeltaTime());
-
+		
+	}
+	@Override
+	public void show() {
+	
 	}
 
 	@Override

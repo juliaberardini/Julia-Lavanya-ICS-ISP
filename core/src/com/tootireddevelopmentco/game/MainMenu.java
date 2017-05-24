@@ -31,6 +31,7 @@ public class MainMenu implements Screen {
 	private Skin skin;
 	private Table table;  
 	private TweenManager tweenManager;
+	public final RabbitRun game;
 
 	@Override
 	public void render (float delta) {
@@ -42,15 +43,10 @@ public class MainMenu implements Screen {
 
 		tweenManager.update(delta);
 	}
-
-	@Override
-	public void resize(int width, int height) {
-		//stage.setViewport (width, height, false);
-		table.invalidateHierarchy (); 
-	}
-
-	@Override
-	public void show() {
+	
+	public MainMenu (final RabbitRun game)
+	{
+		this.game= game; 
 		stage = new Stage();
 
 		Gdx.input.setInputProcessor(stage);
@@ -74,7 +70,7 @@ public class MainMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new LevelMenu());
+						((Game) Gdx.app.getApplicationListener()).setScreen(new LevelMenu(game));
 					}
 				})));
 			}
@@ -156,6 +152,17 @@ public class MainMenu implements Screen {
 		Tween.from(table, ActorAccessor.Y, .75f).target(Gdx.graphics.getHeight() / 8).start(tweenManager);
 
 		tweenManager.update(Gdx.graphics.getDeltaTime());
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		//stage.setViewport (width, height, false);
+		table.invalidateHierarchy (); 
+	}
+
+	@Override
+	public void show() {
+		
 	}
 
 	@Override
