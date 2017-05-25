@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -71,18 +72,23 @@ public void update (float delta) {
 
 @Override
 public boolean keyDown(int keycode) {
+	 float force = (float) (body.getMass() * 10 / (1/60.0));
+	if(keycode == Input.Keys.RIGHT) 
+        body.setLinearVelocity(10f, 0f);
+    if(keycode == Input.Keys.LEFT)
+    	body.setLinearVelocity(-10f, 0f);
+    if (keycode == Input.Keys.UP && canJump)
+    {
+    	body.applyForce(new Vector2(0,force-15), body.getWorldCenter(), true );
+    }
+    	
+  
 	return false;
 }
 
 @Override
 public boolean keyUp(int keycode) {
-	if(keycode == Input.Keys.RIGHT) 
-        body.setLinearVelocity(1f, 0f);
-    if(keycode == Input.Keys.LEFT)
-        body.setLinearVelocity(-1f,0f);
-    if (keycode == Input.Keys.UP && canJump)
-    	body.applyForceToCenter (0f, 30f, true);
-    
+
     return false; 
 }
 

@@ -74,7 +74,6 @@ public class Splash implements Screen {
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		dispose (); 
 	}
 

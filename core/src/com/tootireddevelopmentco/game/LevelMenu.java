@@ -23,11 +23,11 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
 public class LevelMenu implements Screen {
-	private Skin skin; 
-	private Table table; 
+	private Skin skin;  //disposed 
+	private Table table;  //not disposable
 	private TweenManager tweenManager; 
 	public final RabbitRun game; 
-	private Stage stage; 
+	private Stage stage; //disposed
 
 	public LevelMenu (final RabbitRun game)
 	{
@@ -54,7 +54,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 0, 179));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 300, 300));
 					}
 				})));
 			}
