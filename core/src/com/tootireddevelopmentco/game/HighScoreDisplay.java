@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
 
 public class HighScoreDisplay implements Screen {
 

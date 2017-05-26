@@ -55,7 +55,7 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 	    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	    game.camera.position.set(new Vector3(player.getX()+47, player.getY()+134, 0));
+	    game.camera.position.set(new Vector3(player.getX()+470, player.getY()+127, 0));
 	    game.camera.update();
 	    world.step(1f / 60f, 6, 2);
 	    

@@ -38,7 +38,7 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 	renderer = new OrthogonalTiledMapRenderer(map);
 	detector= new CollisionDetector (world, "LevelMap.tmx", game);
     player = new Player(world, game, strtX, strtY, name, score);
-    player.changeJump(true);
+    player.changeJump(false);
     debugRenderer = new Box2DDebugRenderer();
     Gdx.input.setInputProcessor(player);  
 }
@@ -46,12 +46,11 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 
 @Override
 public void show() {
-	// TODO Auto-generated method stub
 	
 }
 @Override
 public void render(float delta) {
-	// TODO Auto-generated method stub
+
 	Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

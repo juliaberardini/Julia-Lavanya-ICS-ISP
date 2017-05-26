@@ -45,8 +45,24 @@ public class LevelMenu implements Screen {
 		
 		//level buttons!! 
 		//level 1 button 
-		TextButton level1 = new TextButton("Level1", skin);
+		TextButton level1 = new TextButton("Garden Jump", skin);
 		level1.addListener(new ClickListener() {
+
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				stage.addAction(sequence(moveTo(0, -stage.getHeight(), .5f), run(new Runnable() {
+
+					@Override
+					public void run() {
+						((Game) Gdx.app.getApplicationListener()).setScreen(new PhysicsLevelGraph(game, 100, 100));
+					}
+				})));
+			}
+		});
+		level1.pad(15);
+		//level 2 button 
+		TextButton level2 = new TextButton("Plant Passage", skin);
+		level2.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -59,25 +75,9 @@ public class LevelMenu implements Screen {
 				})));
 			}
 		});
-		level1.pad(15);
-		//level 2 button 
-		TextButton level2 = new TextButton("Level2", skin);
-		level2.addListener(new ClickListener() {
-
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				stage.addAction(sequence(moveTo(0, -stage.getHeight(), .5f), run(new Runnable() {
-
-					@Override
-					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new PhysicsLevelGraph());
-					}
-				})));
-			}
-		});
 		level2.pad(15);
 		//level 3 button 
-		TextButton level3 = new TextButton("LEVEL3", skin);
+		TextButton level3 = new TextButton("Matter March", skin);
 		level3.addListener(new ClickListener() {
 
 			@Override
