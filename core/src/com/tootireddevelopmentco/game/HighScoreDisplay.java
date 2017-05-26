@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class HighScoreDisplay implements Screen {
 
 	Game rabbitRun; 
-	private Texture highScoreBack; 
+// private Texture highScoreBack; 
 	private List <String> playerString = new ArrayList <String> (); 
 	
 	public HighScoreDisplay ()

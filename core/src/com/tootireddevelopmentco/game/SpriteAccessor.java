@@ -23,7 +23,6 @@ public class SpriteAccessor implements TweenAccessor<Sprite> {
 
 	@Override
 	public void setValues(Sprite target, int tweenType, float[] newValues) {
-		// TODO Auto-generated method stub
 		switch (tweenType){
 		case ALPHA: 
 			target.setColor(target.getColor().r, target.getColor().g, target.getColor ().b, newValues [0]);

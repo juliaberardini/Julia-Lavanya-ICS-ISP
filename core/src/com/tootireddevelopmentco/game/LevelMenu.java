@@ -45,7 +45,7 @@ public class LevelMenu implements Screen {
 		
 		//level buttons!! 
 		//level 1 button 
-		TextButton level1 = new TextButton("LEVEL1", skin);
+		TextButton level1 = new TextButton("Level1", skin);
 		level1.addListener(new ClickListener() {
 
 			@Override
@@ -54,14 +54,14 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 300, 300));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 100, 100));
 					}
 				})));
 			}
 		});
 		level1.pad(15);
 		//level 2 button 
-		TextButton level2 = new TextButton("LEVEL2", skin);
+		TextButton level2 = new TextButton("Level2", skin);
 		level2.addListener(new ClickListener() {
 
 			@Override
@@ -86,7 +86,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new ChemistryLevelGraph());
+						((Game) Gdx.app.getApplicationListener()).setScreen(new ChemistryLevelGraph(game, 100, 100));
 					}
 				})));
 			}

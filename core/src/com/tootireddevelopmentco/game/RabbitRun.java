@@ -3,9 +3,7 @@ package com.tootireddevelopmentco.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class RabbitRun extends Game {
 	public SpriteBatch batch; 

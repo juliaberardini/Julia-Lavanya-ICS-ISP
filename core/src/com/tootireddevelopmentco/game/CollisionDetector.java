@@ -68,7 +68,6 @@ public class CollisionDetector extends ApplicationAdapter {
             if (m2 instanceof RectangleMapObject )
     		{
     			shape2 = getRectProp ((RectangleMapObject) m2); 
-    			System.out.println ("done");
     		}
     		else 
     		{
