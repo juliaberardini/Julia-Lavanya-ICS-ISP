@@ -12,20 +12,23 @@ public class RabbitRun extends Game {
 	final public RabbitRun game= this; 
 	
 	@Override
-	public void create () {
+	public void create () 
+	{
 		batch = new SpriteBatch (); 
 		camera = new OrthographicCamera (); 
 		setScreen (new Splash (game));
 	}
 
 	@Override
-	public void render () {
+	public void render ()
+	{
 		super.render (); 
 	}
 	
 	@Override
-	public void dispose () {
-		batch.dispose ();
+	public void dispose ()
+	{
+
 	}
 
 }

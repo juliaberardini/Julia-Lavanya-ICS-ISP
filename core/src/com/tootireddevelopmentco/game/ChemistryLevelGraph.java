@@ -26,6 +26,7 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	Matrix4 debugMatrix; //not disposable 
 	String name; 
 	Score score; 
+	Obstacle o; 
 		
 	public ChemistryLevelGraph (final RabbitRun game, float strtX, float strtY)
 	{
@@ -40,7 +41,9 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	    player = new Player(world, game, strtX, strtY, name, score);
 	    player.changeJump(false);
 	    debugRenderer = new Box2DDebugRenderer();
-	    Gdx.input.setInputProcessor(player);  
+	    Gdx.input.setInputProcessor(player);
+	    o = new Obstacle ("airSprite.png", "watersprite.png", "iceSprite.png");
+	    
 	}
 
 	@Override
@@ -66,6 +69,7 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	    renderer.render();
 	    game.batch.begin();
 	    player.draw(game.batch);
+	    o.draw (game.batch);
 	    game.batch.end();
 
 	    debugRenderer.render(world, debugMatrix);

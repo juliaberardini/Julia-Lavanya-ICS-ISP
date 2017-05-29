@@ -25,7 +25,8 @@ World world;//disposed
 Box2DDebugRenderer debugRenderer; //disposed 
 Matrix4 debugMatrix; //not disposable 
 String name; 
-Score score; 
+Score score;
+Obstacle o; 
 
 public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 {
@@ -41,6 +42,7 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
     player.changeJump(false);
     debugRenderer = new Box2DDebugRenderer();
     Gdx.input.setInputProcessor(player);  
+    o = new Obstacle ("dryComplaint.png", "cloudyComplaint.png", "sandCompaint.png");
 }
 
 
@@ -58,13 +60,13 @@ public void render(float delta) {
     game.camera.update();
     world.step(1f / 60f, 6, 2);
     
-    debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS,
-            Constants.PIXELS_TO_METERS, 0);
-    game.batch.setProjectionMatrix(game.camera.combined);
+    debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS, Constants.PIXELS_TO_METERS, 0);
+    game.batch.setProjectionMatrix (game.camera.combined);
     renderer.setView(game.camera);
     renderer.render();
     game.batch.begin();
     player.draw(game.batch);
+    o.draw (game.batch);
     game.batch.end();
 
     debugRenderer.render(world, debugMatrix);

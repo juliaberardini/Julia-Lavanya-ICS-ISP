@@ -8,6 +8,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -28,15 +30,18 @@ public class LevelMenu implements Screen {
 	private TweenManager tweenManager; 
 	public final RabbitRun game; 
 	private Stage stage; //disposed
-
+	private Texture background; 
+	private SpriteBatch batch; 
+	
 	public LevelMenu (final RabbitRun game)
 	{
 		this.game= game; 
 		stage= new Stage (); 
 		Gdx.input.setInputProcessor(stage);
-
+		batch = new SpriteBatch ();
+		background= new Texture ("background.png");
+		
 		skin = new Skin(Gdx.files.internal("clean-crispy-ui.json"), new TextureAtlas("clean-crispy-ui.atlas"));
-
 		table = new Table(skin);
 		table.setFillParent(true);
 		//make heading
@@ -139,6 +144,7 @@ public class LevelMenu implements Screen {
 
 		tweenManager.update(Gdx.graphics.getDeltaTime());
 		
+		
 	}
 	@Override
 	public void show() {
@@ -149,7 +155,10 @@ public class LevelMenu implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		
+		batch.begin(); 
+		batch.draw (background, 0, 0);
+		batch.end (); 
 		stage.act(delta);
 		stage.draw();
 
@@ -184,6 +193,7 @@ public class LevelMenu implements Screen {
 	public void dispose() {
 		stage.dispose();
 		skin.dispose();
+		background.dispose();
 	}
 
 }

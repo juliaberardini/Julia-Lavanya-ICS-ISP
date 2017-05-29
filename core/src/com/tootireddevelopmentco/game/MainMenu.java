@@ -15,6 +15,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -32,12 +34,18 @@ public class MainMenu implements Screen {
 	private Table table;  
 	private TweenManager tweenManager;
 	public final RabbitRun game;
+	private SpriteBatch batch; 
+	private Texture background; 
+	
 
 	@Override
 	public void render (float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		batch.begin ();
+		batch.draw (background, 0, 0);
+		batch.end();
 		stage.act(delta);
 		stage.draw();
 
@@ -48,13 +56,14 @@ public class MainMenu implements Screen {
 	{
 		this.game= game; 
 		stage = new Stage();
-
+		batch = new SpriteBatch (); 
 		Gdx.input.setInputProcessor(stage);
 
 		skin = new Skin(Gdx.files.internal("clean-crispy-ui.json"), new TextureAtlas("clean-crispy-ui.atlas"));
 
 		table = new Table(skin);
 		table.setFillParent(true);
+		background = new Texture ("background.png"); 
 
 		// creating heading
 		Label heading = new Label(RabbitRun.TITLE, skin);
@@ -184,6 +193,7 @@ public class MainMenu implements Screen {
 	public void dispose() {
 		stage.dispose();
 		skin.dispose();
+		background.dispose();
 	}
 
 }

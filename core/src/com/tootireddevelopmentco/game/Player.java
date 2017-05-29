@@ -123,7 +123,6 @@ public boolean scrolled(int amount) {
 }
 
 public void draw(SpriteBatch batch) {
-	// TODO Auto-generated method stub
 	 update(Gdx.graphics.getDeltaTime());
 	 sprite.draw(batch);	
 }

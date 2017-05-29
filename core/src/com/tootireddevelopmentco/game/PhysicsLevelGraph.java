@@ -26,6 +26,7 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	Matrix4 debugMatrix; //not disposable 
 	String name; 
 	Score score;
+	Obstacle o; 
 	
 	public PhysicsLevelGraph (final RabbitRun game, float strtX, float strtY)
 	{
@@ -40,7 +41,8 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    player = new Player(world, game, strtX, strtY, name, score);
 	    player.changeJump(true);
 	    debugRenderer = new Box2DDebugRenderer();
-	    Gdx.input.setInputProcessor(player);  
+	    Gdx.input.setInputProcessor(player); 
+	    o = new Obstacle ("carrotsprite.png", "potatosprite.png", "tomatosprite.png");
 	}
 	@Override
 	public void show() 
@@ -57,13 +59,13 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    game.camera.update();
 	    world.step(1f / 60f, 6, 2);
 	    
-	    debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS,
-	            Constants.PIXELS_TO_METERS, 0);
+	    debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS, Constants.PIXELS_TO_METERS, 0);
 	    game.batch.setProjectionMatrix(game.camera.combined);
 	    renderer.setView(game.camera);
 	    renderer.render();
 	    game.batch.begin();
 	    player.draw(game.batch);
+	    o.draw (game.batch);
 	    game.batch.end();
 
 	    debugRenderer.render(world, debugMatrix);	
@@ -80,7 +82,7 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 		map.dispose();
 	    player.getTexture().dispose();
 	    world.dispose();
-	    debugRenderer.dispose (); 
+	    //debugRenderer.dispose (); 
 	}
 	
 }
