@@ -1,109 +1,102 @@
-/*package com.tootireddevelopmentco.game;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.transform.Source;
+package com.tootireddevelopmentco.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+import com.badlogic.RabbitRun.utils.GdxTest;
 
-public class DragAndDrop extends ScreenAdapter {
+public class DragAndDrop {
+	Stage stage;
 
-	private Stage stage = new Stage();
+	public void create () {
+		stage = new Stage();
+		Gdx.input.setInputProcessor(stage);
 
-	public DragAndDrop () 
-	{
-		Skin skin =  new Skin(Gdx.files.internal("clean-crispy-ui.json"), new TextureAtlas("clean-crispy-ui.atlas"));
+		final Skin skin = new Skin();
+		skin.add(" ", new LabelStyle(new BitmapFont(), Color.WHITE));
+		skin.add(" ", new Texture(" "));
 
-		stage.setDebugAll(true);
+		Image sourceImage = new Image(skin, " ");
+		sourceImage.setBounds(50, 125, 100, 100);
+		stage.addActor(sourceImage);
 
-		List<String> elements = new List<> (skin);
-		List <String >sell = new List <> (skin);
-		
-		elements.add ("Water");
-		elements.add("Oxygen");
-		elements.add("Sun");
-	
-		Table table = new Table(skin);
-		table.setFillParent(true);
-		stage.addActor(table);
+		Image validTargetImage = new Image(skin, " ");
+		validTargetImage.setBounds(200, 50, 100, 100);
+		stage.addActor(validTargetImage);
 
-		table.defaults();
-		table.add("Water");
-		table.add ("Sun"); 
-		table.add("Oxygen").row();
-		table.add (elements).expand().fill();
-		table.add (sell).expand().fill();
+		Image invalidTargetImage = new Image(skin, " ");
+		invalidTargetImage.setBounds(200, 200, 100, 100);
+		stage.addActor(invalidTargetImage);
 
-		DragAndDrop dnd = new DragAndDrop();
-		dnd.addSource(new Source (elements)) {
-			final Payload payload = new Payload();
-			public Payload dragStart(InputEvent event, float x, float y, int pointer) {
-				String item = elements.getSelected();
-				payload.setObject(item);
-				elements.getItems().removeIndex(elements.getSelectedIndex());
-				payload.setDragActor(new Label(item, skin));
-				payload.setInvalidDragActor(new Label(item + "Correct!", skin));
-				payload.setValidDragActor(new Label(item + "Incorrect.", skin));
+		DragAndDrop dragAndDrop = new DragAndDrop();
+		dragAndDrop.addSource(new Source(/*image*/) {
+			public Payload dragStart (InputEvent event, float x, float y, int pointer) {
+				Payload payload = new Payload();
+				payload.setObject("Water");
+
+				payload.setDragActor(new Label("Sunlight", skin));
+
+				Label validLabel = new Label("Soil", skin);
+				validLabel.setColor(0, 1, 0, 1);
+				payload.setValidDragActor(validLabel);
+
+
 				return payload;
 			}
-
-			@Override
-			public void dragStop(InputEvent event, float x, float y, int pointer, Payload payload, Target target) {
-				if(target == null)
-					elements.getItems().add((String) payload.getObject());
+		});
+		dragAndDrop.addTarget(new Target(/*image*/) {
+			public boolean drag (Source source, Payload payload, float x, float y, int pointer) {
+				getActor().setColor(Color.GREEN);
+				return true;
 			}
 
-			@Override
-			public String getSystemId() {
-				return null;
+			public void reset (Source source, Payload payload) {
+				getActor().setColor(Color.WHITE);
 			}
 
-			@Override
-			public void setSystemId(String systemId) {
+			public void drop (Source source, Payload payload, float x, float y, int pointer) {
+				System.out.println("Accepted: " + payload.getObject() + " " + x + ", " + y);
 			}
 		});
-		dnd.addTarget(new Target(sell) {
-			@Override
-			public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
-				return !"Element".equals(payload.getObject());
+		dragAndDrop.addTarget(new Target(/*image*/) {
+			public boolean drag (Source source, Payload payload, float x, float y, int pointer) {
+				getActor().setColor(Color.RED);
+				return false;
 			}
 
-			@Override
-			public void drop(Source source, Payload payload, float x, float y, int pointer) {
-				sell.getItems().add((String) payload.getObject());
+			public void reset (Source source, Payload payload) {
+				getActor().setColor(Color.WHITE);
+			}
+
+			public void drop (Source source, Payload payload, float x, float y, int pointer) {
 			}
 		});
 	}
 
-	@Override
-	public void show() {
-		Gdx.input.setInputProcessor(stage);
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		stage.getViewport().update(width, height, true);
-	}
-
-	@Override
-	public void render(float delta) {
+	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		stage.act(delta);
+		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 	}
 
-	@Override
-	public void dispose() {
-		stage.dispose();
+	public void resize (int width, int height) {
+		stage.getViewport().update(width, height, true);
 	}
 
-}*/
+	public void dispose () {
+		stage.dispose();
+	}
+}
