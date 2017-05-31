@@ -23,7 +23,9 @@ import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
-public class LevelMenu implements Screen {
+public class Instructions implements Screen 
+{
+
 	private Skin skin;  //disposed 
 	private Table table;  //not disposable
 	private TweenManager tweenManager; 
@@ -31,7 +33,7 @@ public class LevelMenu implements Screen {
 	private Stage stage; //disposed
 	private Texture background; 
 	
-	public LevelMenu (final RabbitRun game)
+	public Instructions (final RabbitRun game)
 	{
 		this.game= game; 
 		stage= new Stage (); 
@@ -42,7 +44,8 @@ public class LevelMenu implements Screen {
 		table = new Table(skin);
 		table.setFillParent(true);
 		//make heading
-		Label heading = new Label("Levels", skin);
+		Label heading = new Label("Instructions", skin);
+		Label instructions = new Label ("Please choose a game to learn about...", skin);
 		heading.setFontScale(2);
 		
 		//level buttons!! 
@@ -56,7 +59,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new PhysicsLevelGraph(game, 100, 100));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new Level1Instruct(game));
 					}
 				})));
 			}
@@ -72,7 +75,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 100, 100));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new Level2Instruct (game));
 					}
 				})));
 			}
@@ -88,7 +91,7 @@ public class LevelMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new ChemistryLevelGraph(game, 100, 100));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new Level3Instruct (game));
 					}
 				})));
 			}
@@ -112,6 +115,7 @@ public class LevelMenu implements Screen {
 
 		//display
 		table.add(heading).spaceBottom(100).row();
+		table.add (instructions).spaceBottom (10).row ();
 		table.add(level1).spaceBottom(15).row();
 		table.add(level2).spaceBottom(15).row();
 		table.add(level3).spaceBottom(15).row ();
@@ -129,6 +133,7 @@ public class LevelMenu implements Screen {
 		.push(Tween.set(level3, ActorAccessor.ALPHA).target(0))
 		.push(Tween.set(back, ActorAccessor.ALPHA).target(0))
 		.push(Tween.from(heading, ActorAccessor.ALPHA, .25f).target(0))
+		.push(Tween.from(instructions, ActorAccessor.ALPHA, .25f).target(0))
 		.push(Tween.to(level1, ActorAccessor.ALPHA, .25f).target(1))
 		.push(Tween.to(level2, ActorAccessor.ALPHA, .25f).target(1))
 		.push(Tween.to(level3, ActorAccessor.ALPHA, .25f).target(1))
@@ -149,7 +154,8 @@ public class LevelMenu implements Screen {
 	}
 
 	@Override
-	public void render(float delta) {
+	public void render(float delta) 
+	{
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -164,7 +170,8 @@ public class LevelMenu implements Screen {
 	}
 
 	@Override
-	public void resize(int width, int height) {	
+	public void resize(int width, int height)
+	{	
 		table.invalidateHierarchy (); 
 	}
 
@@ -175,7 +182,8 @@ public class LevelMenu implements Screen {
 	}
 
 	@Override
-	public void resume() {
+	public void resume() 
+	{
 	
 
 	}
@@ -187,10 +195,10 @@ public class LevelMenu implements Screen {
 	}
 
 	@Override
-	public void dispose() {
+	public void dispose() 
+	{
 		stage.dispose();
 		skin.dispose();
 		background.dispose();
 	}
-
 }
