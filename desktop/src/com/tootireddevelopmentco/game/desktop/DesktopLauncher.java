@@ -3,7 +3,8 @@ package com.tootireddevelopmentco.game.desktop;
  import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
  import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
  import com.tootireddevelopmentco.game.RabbitRun;
- public class DesktopLauncher {
+ public class DesktopLauncher 
+ {
  	
  	public static final String NAME = "Rabbit Run";  
  	
