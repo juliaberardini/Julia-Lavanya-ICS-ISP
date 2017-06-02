@@ -1,5 +1,6 @@
 package com.tootireddevelopmentco.game;
 
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -13,10 +14,15 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.Timer.Task; 
+
+
 
 public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	
 	private TiledMap map;  //disposed
+	private float timeElapsed = 0; 
 	private TiledMapRenderer renderer; //not disposable 
 	public static CollisionDetector detector; //not disposable 
 	public final RabbitRun game;  // shouldn't dispose game? 
@@ -27,6 +33,8 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	String name; 
 	Score score;
 	Obstacle o; 
+
+	
 	
 	public PhysicsLevelGraph (final RabbitRun game, float strtX, float strtY)
 	{
@@ -43,6 +51,15 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    debugRenderer = new Box2DDebugRenderer();
 	    Gdx.input.setInputProcessor(player); 
 	    o = new Obstacle ("carrotsprite.png", "potatosprite.png", "tomatosprite.png");
+	    Timer.schedule(new Task(){
+            @Override
+            public void run() {
+                timeElapsed = (Gdx.graphics.getDeltaTime()*1000); 
+            }
+        }
+        , 0   
+        , 1
+    );	
 	}
 	@Override
 	public void show() 
@@ -69,6 +86,7 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    game.batch.end();
 
 	    debugRenderer.render(world, debugMatrix);	
+	    
 	}
 	
 	@Override

@@ -115,23 +115,25 @@ public class MainMenu implements Screen {
 
 		buttonScores.pad(15);
 
-		TextButton buttonExit = new TextButton("EXIT", skin);
+		TextButton buttonExit = new TextButton("QUIT", skin);
 		buttonExit.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				Timeline.createParallel().beginParallel()
-						.push(Tween.to(table, ActorAccessor.ALPHA, .75f).target(0))
-						.push(Tween.to(table, ActorAccessor.Y, .75f).target(table.getY() - 50)
-								.setCallback(new TweenCallback() {
 
-									@Override
-									public void onEvent(int type, BaseTween<?> source) {
-										Gdx.app.exit();
-									}
-								}))
-						.end().start(tweenManager);
-			}
+				Timeline.createParallel().beginParallel();
+
+				stage.addAction(sequence(moveTo(0, -stage.getHeight(), .5f), run(new Runnable() {
+
+
+
+				@Override
+
+				public void run() {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new QuitScreen (game));
+				}
+				})));
+				}
 		});
 		buttonExit.pad(15);
 

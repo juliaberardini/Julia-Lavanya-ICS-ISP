@@ -1,5 +1,6 @@
 package com.tootireddevelopmentco.game;
 
+/*
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -42,7 +43,7 @@ public class DragAndDrop {
 		stage.addActor(invalidTargetImage);
 
 		DragAndDrop dragAndDrop = new DragAndDrop();
-		dragAndDrop.addSource(new Source(/*image*/) {
+		dragAndDrop.addSource(new Source(/*image) {
 			public Payload dragStart (InputEvent event, float x, float y, int pointer) {
 				Payload payload = new Payload();
 				payload.setObject("Water");
@@ -57,7 +58,7 @@ public class DragAndDrop {
 				return payload;
 			}
 		});
-		dragAndDrop.addTarget(new Target(/*image*/) {
+		dragAndDrop.addTarget(new Target(/*image) {
 			public boolean drag (Source source, Payload payload, float x, float y, int pointer) {
 				getActor().setColor(Color.GREEN);
 				return true;
@@ -71,7 +72,7 @@ public class DragAndDrop {
 				System.out.println("Accepted: " + payload.getObject() + " " + x + ", " + y);
 			}
 		});
-		dragAndDrop.addTarget(new Target(/*image*/) {
+		dragAndDrop.addTarget(new Target(/*image) {
 			public boolean drag (Source source, Payload payload, float x, float y, int pointer) {
 				getActor().setColor(Color.RED);
 				return false;
@@ -99,4 +100,4 @@ public class DragAndDrop {
 	public void dispose () {
 		stage.dispose();
 	}
-}
+}*/ 
