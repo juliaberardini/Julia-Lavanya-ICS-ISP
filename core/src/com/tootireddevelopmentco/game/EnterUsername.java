@@ -61,6 +61,7 @@ public class EnterUsername implements Screen {
 
 							@Override
 							public void run() {
+								//yoohoo this needs to go in an array dont forget!
 								System.out.println (username.getText()); 
 								((Game) Gdx.app.getApplicationListener()).setScreen(new LevelMenu (game));
 							}

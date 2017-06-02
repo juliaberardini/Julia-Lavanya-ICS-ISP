@@ -30,7 +30,6 @@ public class ActorAccessor implements TweenAccessor<Actor> {
 
 	@Override
 	public void setValues(Actor arg0, int arg1, float[] arg2) {
-		// TODO Auto-generated method stub
 		switch (arg1) {
 		case Y:
 			arg0.setY(arg2[0]);
