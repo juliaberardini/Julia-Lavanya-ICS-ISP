@@ -94,9 +94,9 @@ public class LevelMenu implements Screen {
 			}
 		});
 		level3.pad(15);
-		//back button 
-		TextButton back = new TextButton("BACK", skin);
-		back.addListener(new ClickListener() {
+		//main menu button 
+		TextButton mainMenu = new TextButton("Main Menu", skin);
+		mainMenu.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -108,14 +108,14 @@ public class LevelMenu implements Screen {
 				})));
 			}
 		});
-		back.pad(15);
+		mainMenu.pad(15);
 
 		//display
 		table.add(heading).spaceBottom(100).row();
 		table.add(level1).spaceBottom(15).row();
 		table.add(level2).spaceBottom(15).row();
 		table.add(level3).spaceBottom(15).row ();
-		table.add (back); 
+		table.add (mainMenu); 
 
 		stage.addActor(table);
 		
@@ -127,12 +127,12 @@ public class LevelMenu implements Screen {
 		.push(Tween.set(level1, ActorAccessor.ALPHA).target(0))
 		.push(Tween.set(level2, ActorAccessor.ALPHA).target(0))
 		.push(Tween.set(level3, ActorAccessor.ALPHA).target(0))
-		.push(Tween.set(back, ActorAccessor.ALPHA).target(0))
+		.push(Tween.set(mainMenu, ActorAccessor.ALPHA).target(0))
 		.push(Tween.from(heading, ActorAccessor.ALPHA, .25f).target(0))
 		.push(Tween.to(level1, ActorAccessor.ALPHA, .25f).target(1))
 		.push(Tween.to(level2, ActorAccessor.ALPHA, .25f).target(1))
 		.push(Tween.to(level3, ActorAccessor.ALPHA, .25f).target(1))
-		.push(Tween.to(back, ActorAccessor.ALPHA,.25f).target (1))
+		.push(Tween.to(mainMenu, ActorAccessor.ALPHA,.25f).target (1))
 		.end().start(tweenManager);
 		
 		//table fade

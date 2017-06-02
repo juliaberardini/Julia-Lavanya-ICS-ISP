@@ -16,7 +16,7 @@ public class RabbitRun extends Game {
 	{
 		batch = new SpriteBatch (); 
 		camera = new OrthographicCamera (); 
-		setScreen (new enterUsername (game));
+		setScreen (new Splash (game));
 	}
 
 	@Override
