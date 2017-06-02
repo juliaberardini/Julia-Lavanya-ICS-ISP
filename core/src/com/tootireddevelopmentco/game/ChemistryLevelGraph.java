@@ -2,6 +2,7 @@ package com.tootireddevelopmentco.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -27,23 +28,31 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	String name; 
 	Score score; 
 	Obstacle o; 
+	DragAndDropImplement d; 
+	InputMultiplexer i; 
 		
 	public ChemistryLevelGraph (final RabbitRun game, float strtX, float strtY)
 	{
 		this.game=game; 
 		game.camera.setToOrtho(false);
-		game.camera.position.set (0, 0, 0);
-		game.camera.update();
+	
 		world = new World (new Vector2(0f,-9.8f), true);  
 		map = new TmxMapLoader ().load ("WinterLevelMap.tmx"); 
 		renderer = new OrthogonalTiledMapRenderer(map);
 		detector= new CollisionDetector (world, "LevelMap.tmx", game);
 	    player = new Player(world, game, strtX, strtY, name, score);
 	    player.changeJump(false);
+		game.camera.position.set (new Vector3(player.getX()+470, player.getY()+127, 0));
+		game.camera.update();
 	    debugRenderer = new Box2DDebugRenderer();
-	    Gdx.input.setInputProcessor(player);
 	    o = new Obstacle ("airSprite.png", "watersprite.png", "iceSprite.png");
+	    d= new DragAndDropImplement (game, false, "hotIconSprite.png", "coldIconSprite.png", null,(int) game.camera.position.x, 50, world, "chemistry"); 
+	    i = new InputMultiplexer();
+	        
+	    i.addProcessor(player);
+	    i.addProcessor(d);
 	    
+	    Gdx.input.setInputProcessor(i);   	    
 	}
 
 	@Override
@@ -59,16 +68,18 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	    game.camera.position.set(new Vector3(player.getX()+470, player.getY()+127, 0));
-	    game.camera.update();
+	    
 	    world.step(1f / 60f, 6, 2);
+	    game.camera.update();
 	    
 	    debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS,
 	            Constants.PIXELS_TO_METERS, 0);
 	    game.batch.setProjectionMatrix(game.camera.combined);
-	    renderer.setView(game.camera);
-	    renderer.render();
-	    game.batch.begin();
-	    player.draw(game.batch);
+	    renderer.setView (game.camera);
+	    renderer.render ();
+	    game.batch.begin ();
+	    player.draw (game.batch);
+	    d.draw (game.batch);
 	    o.draw (game.batch);
 	    game.batch.end();
 

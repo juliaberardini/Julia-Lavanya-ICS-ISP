@@ -2,6 +2,7 @@ package com.tootireddevelopmentco.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -27,6 +28,8 @@ Matrix4 debugMatrix; //not disposable
 String name; 
 Score score;
 Obstacle o; 
+DragAndDropImplement d; 
+InputMultiplexer i; 
 
 public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 {
@@ -43,6 +46,12 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
     debugRenderer = new Box2DDebugRenderer();
     Gdx.input.setInputProcessor(player);  
     o = new Obstacle ("dryComplaint.png", "cloudyComplaint.png", "sandCompaint.png");
+    d= new DragAndDropImplement (game, true, "rainSprite.png", "sunSprite.png", "dirtSprite.png",(int) game.camera.position.x, 50, world, "biology" );
+    i = new InputMultiplexer();
+    i.addProcessor(player);
+    i.addProcessor(d);
+    
+    Gdx.input.setInputProcessor(i);
 }
 
 
@@ -57,8 +66,9 @@ public void render(float delta) {
     Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     game.camera.position.set(new Vector3(player.getX()+472, player.getY()+128, 0));
-    game.camera.update();
+    
     world.step(1f / 60f, 6, 2);
+    game.camera.update();
     
     debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS, Constants.PIXELS_TO_METERS, 0);
     game.batch.setProjectionMatrix (game.camera.combined);
@@ -66,6 +76,7 @@ public void render(float delta) {
     renderer.render();
     game.batch.begin();
     player.draw(game.batch);
+    d.draw (game.batch);
     o.draw (game.batch);
     game.batch.end();
 

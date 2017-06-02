@@ -21,8 +21,7 @@ Sprite sprite;
 World world; 
 Body body; 
 final RabbitRun game; 
-
-
+static int playX; 
 public Player (World world, final RabbitRun game,  float startX, float StartY, String name, Score score)
 {
 	this.game= game; 
@@ -129,6 +128,7 @@ public void draw(SpriteBatch batch) {
 
 public float getX() {
 	// TODO Auto-generated method stub
+	playX = (int) sprite.getX (); 
 	return sprite.getX();
 }
 
@@ -141,4 +141,5 @@ public Texture getTexture() {
 	// TODO Auto-generated method stub
 	return sprite.getTexture (); 
 }
+
 }

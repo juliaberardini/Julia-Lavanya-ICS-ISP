@@ -21,7 +21,7 @@ public class CollisionDetector extends ApplicationAdapter {
 	private TmxMapLoader mapLoader; 
 	World world;
 	final RabbitRun game; 
-	Body[] obstacleArr; 
+	static Body[] obstacleArr; 
 	Body ground; 
 	
 	
@@ -60,7 +60,7 @@ public class CollisionDetector extends ApplicationAdapter {
 		{
             BodyDef collDef = new BodyDef();
             collDef.fixedRotation = true; 
-            collDef.type = BodyDef.BodyType.StaticBody;
+            collDef.type = BodyDef.BodyType.StaticBody; 
             collDef.position.set(new Vector2(0, 0f));
             obstacleArr[i] = world.createBody(collDef); 
             Shape shape2;  
@@ -74,7 +74,7 @@ public class CollisionDetector extends ApplicationAdapter {
     			throw (new ClassCastException("something went wrong")); 
     		}
             FixtureDef fix2 = new FixtureDef();
-            fix2.density = 1;
+            fix2.density = 1f;
             fix2.shape = shape2;
             fix2.restitution = 0;
             obstacleArr[i].createFixture(fix2);
