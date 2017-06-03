@@ -76,7 +76,7 @@ public boolean keyDown(int keycode) {
         body.setLinearVelocity(10f, 0f);
     if(keycode == Input.Keys.LEFT)
     	body.setLinearVelocity(-10f, 0f);
-    if (keycode == Input.Keys.UP && canJump)
+    if (keycode == Input.Keys.UP && canJump && sprite.getY () <= 188)
     {
     	body.applyForce(new Vector2(0,force-15), body.getWorldCenter(), true );
     }

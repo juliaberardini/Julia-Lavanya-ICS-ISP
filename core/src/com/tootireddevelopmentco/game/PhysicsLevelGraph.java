@@ -100,7 +100,7 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 		map.dispose();
 	    player.getTexture().dispose();
 	    world.dispose();
-	    //debugRenderer.dispose (); 
+	    debugRenderer.dispose (); 
 	}
 	
 }
