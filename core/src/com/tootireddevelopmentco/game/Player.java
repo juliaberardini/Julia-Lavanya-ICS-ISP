@@ -16,8 +16,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class Player implements InputProcessor {
-private static String name;
-private static Score score; 
+private String name = " ";
+private Score score = new Score (0, null); 
 private boolean canJump = false; 
 Sprite sprite; 
 World world; 
@@ -47,6 +47,8 @@ public Player (World world, final RabbitRun game,  float startX, float StartY, S
 public Player (final RabbitRun game, String name, Score score)
 {
 	this.game = game;
+	this.name = name; 
+	this.score = score; 
 }
 
 public String getName () 
@@ -54,12 +56,12 @@ public String getName ()
 	return name;
 }
 
-public Score getScore ()
+public Score setScore (Score score)
 {
 	return score; 
 }
 
-public static String toString (ArrayList<Player> rabrunPlayers)
+public String toString ()
 {
 	return name + "     " + score ;
 }

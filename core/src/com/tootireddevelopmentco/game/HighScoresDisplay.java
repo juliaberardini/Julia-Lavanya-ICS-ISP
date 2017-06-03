@@ -3,6 +3,11 @@ package com.tootireddevelopmentco.game;
 import com.badlogic.gdx.Screen;
 
 public class HighScoresDisplay implements Screen {
+	
+	public HighScoresDisplay ()
+	{
+		
+	}
 
 	@Override
 	public void show() {

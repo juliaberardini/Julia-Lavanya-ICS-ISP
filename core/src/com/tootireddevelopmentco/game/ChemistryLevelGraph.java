@@ -1,6 +1,6 @@
 package com.tootireddevelopmentco.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -19,7 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
+public class ChemistryLevelGraph extends Game implements Screen {
 	
 	private TiledMap map;  //disposed
 	private float timeElapsed = 0; //not disposable
@@ -37,7 +37,7 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	private InputMultiplexer i;
 	private Skin skin; //disposed
 	private Stage stage; //disposed
-	private Label label; //no dispose
+	private Label label; //no dispose 
 		
 	public ChemistryLevelGraph (final RabbitRun game, float strtX, float strtY)
 	{
@@ -66,6 +66,9 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	    label.setFontScale(2f);
 	    stage.addActor (label);
 	    Gdx.input.setInputProcessor(i);   	    
+
+
+	    
 	}
 
 	@Override
@@ -105,6 +108,13 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	    game.batch.end();
 	    stage.draw();
 	    debugRenderer.render(world, debugMatrix);
+	    
+	    
+	    if (player.getX () >= 4000)
+	    {
+	    	((Game) Gdx.app.getApplicationListener()).setScreen (new ReturnToMain (game));
+
+	    }
 	}
 
 	@Override
@@ -119,5 +129,11 @@ public class ChemistryLevelGraph extends ApplicationAdapter implements Screen {
 	    player.getTexture().dispose();
 	    world.dispose();
 	    debugRenderer.dispose (); 
+	}
+
+	@Override
+	public void create() {
+		// TODO Auto-generated method stub
+		
 	}
 }

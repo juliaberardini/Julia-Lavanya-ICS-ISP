@@ -1,6 +1,7 @@
 package com.tootireddevelopmentco.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -105,6 +106,13 @@ public void render(float delta) {
     game.batch.end();
     stage.draw();
     debugRenderer.render(world, debugMatrix);
+    
+    
+    if (player.getX () >= 4000)
+    {
+    	((Game) Gdx.app.getApplicationListener()).setScreen (new ReturnToMain (game));
+
+    }
 	
 }
 @Override

@@ -2,6 +2,7 @@ package com.tootireddevelopmentco.game;
 
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -98,6 +99,14 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    stage.draw();
 
 	    debugRenderer.render(world, debugMatrix);	
+	    
+	    
+	    if (player.getX () >= 4000)
+	    {
+	    	((Game) Gdx.app.getApplicationListener()).setScreen (new ReturnToMain (game));
+	    	Score.calculateScore (timeElapsed); 
+
+	    }
 	    
 	}
 	

@@ -2,7 +2,7 @@ package com.tootireddevelopmentco.game;
 
 public class Score {
 
-	private Integer scoreValue; 
+	private static Integer scoreValue; 
 	private String level; 
 	
 	public Score (int scoreValue, String level)
@@ -20,9 +20,9 @@ public class Score {
 		return scoreValue;
 	}
 	
-	public void calculateScore (int timeTaken)
+	public static void calculateScore (float timeElapsed)
 	{
-		scoreValue= 1000- timeTaken; 
+		scoreValue= (int) (1000- timeElapsed); 
 	}
 	
 	public String getLevel () 

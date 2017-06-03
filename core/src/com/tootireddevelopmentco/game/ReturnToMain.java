@@ -18,31 +18,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
-import java.util.ArrayList; 
 
 import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
-
-public class EnterUsername implements Screen {
-	
+public class ReturnToMain implements Screen {
 	private Skin skin;  //disposed 
 	private Table table;  //not disposable
 	private TweenManager tweenManager; 
 	public final RabbitRun game; 
 	private Stage stage; //disposed
 	private Texture background; 
-	private TextField username; 
-	Game rabbitRun;  
-
-
-	public EnterUsername (final RabbitRun game)
+	
+	public ReturnToMain (final RabbitRun game)
 	{
-		final ArrayList<Player> rabrunPlayers = new ArrayList<Player>();
-		
-		this.game= game;   
+		this.game= game; 
 		stage= new Stage (); 
 		Gdx.input.setInputProcessor(stage);
 		background= new Texture ("background.png");
@@ -51,37 +42,13 @@ public class EnterUsername implements Screen {
 		table = new Table(skin);
 		table.setFillParent(true);
 		//make heading
-		Label heading = new Label("ENTER YOUR USERNAME:", skin);
+		Label heading = new Label("Congratulations! Ronnie is Home!", skin);
 		heading.setFontScale(2);
-		
-		// creating buttons
-				TextButton continueButton = new TextButton("Continue", skin);
-				continueButton.addListener(new ClickListener() {
- 
-					@Override
-					public void clicked(InputEvent event, float x, float y) {
-						stage.addAction(sequence(moveTo(0, -stage.getHeight(), .5f), run(new Runnable() {
+		 
 
-							@Override
-							public void run() { 
-								((Game) Gdx.app.getApplicationListener()).setScreen(new LevelMenu (game));
-
-							}
-
-							
-						})));  
-						rabrunPlayers.add (new Player(game, username.getText (), new Score (0, null)));
-						System.out.println (rabrunPlayers);  
-					}
-					
-
-				});
-
-				continueButton.pad(15);
-		
-		//back button
-		TextButton back = new TextButton("BACK", skin);
-		back.addListener(new ClickListener() {
+		//main menu button 
+		TextButton mainMenu = new TextButton("Main Menu", skin);
+		mainMenu.addListener(new ClickListener() {
 
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -93,13 +60,11 @@ public class EnterUsername implements Screen {
 				})));
 			}
 		});
-		back.pad(15);
-		
+		mainMenu.pad(15);
 
 		//display
-		table.add(heading).spaceBottom (400).row();
-		table.add (continueButton); 
-		table.add (back);  
+		table.add(heading).spaceBottom(100).row();
+		table.add (mainMenu); 
 
 		stage.addActor(table);
 		
@@ -108,9 +73,9 @@ public class EnterUsername implements Screen {
 		
 		//fade in 
 		Timeline.createSequence().beginSequence()
-		.push(Tween.set(continueButton, ActorAccessor.ALPHA).target(0))
+		.push(Tween.set(mainMenu, ActorAccessor.ALPHA).target(0))
 		.push(Tween.from(heading, ActorAccessor.ALPHA, .25f).target(0))
-		.push(Tween.to(continueButton, ActorAccessor.ALPHA,.25f).target (1))
+		.push(Tween.to(mainMenu, ActorAccessor.ALPHA,.25f).target (1))
 		.end().start(tweenManager);
 		
 		//table fade
@@ -119,55 +84,12 @@ public class EnterUsername implements Screen {
 
 		tweenManager.update(Gdx.graphics.getDeltaTime());
 		
-		//username textbox
-		username = new TextField ("", skin);
-		username.setPosition(300, 300);
-		username.setSize (300,40);
-		
-		stage.addActor(username);
-
 		
 	}
-
-
 	@Override
 	public void show() {
-		
+	
 	}
-
-
-	@Override
-	public void resize(int width, int height) {
-		
-	}
-
-
-	@Override
-	public void pause() {
-		
-	}
-
-
-	@Override
-	public void resume() {
-		
-	}
-
-
-	@Override
-	public void hide() {
-		dispose ();
-	}
-
-
-	@Override
-	public void dispose() {
-		stage.dispose();
-		skin.dispose();
-		background.dispose();
-		
-	}
-
 
 	@Override
 	public void render(float delta) {
@@ -182,8 +104,36 @@ public class EnterUsername implements Screen {
 
 		tweenManager.update(delta); 
 
-		
 	}
 
+	@Override
+	public void resize(int width, int height) {	
+		table.invalidateHierarchy (); 
+	}
+
+	@Override
+	public void pause() {
+		
+
+	}
+
+	@Override
+	public void resume() {
+	
+
+	}
+
+	@Override
+	public void hide() {
+		dispose (); 
+
+	}
+
+	@Override
+	public void dispose() {
+		stage.dispose();
+		skin.dispose();
+		background.dispose();
+	}
 
 }
