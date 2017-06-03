@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -14,22 +15,29 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class BiologyLevelGraph extends ApplicationAdapter implements Screen {
 	
 private TiledMap map;  //disposed
+private float timeElapsed = 0; //not disposable
 private TiledMapRenderer renderer; //not disposable 
 public static CollisionDetector detector; //not disposable 
 public final RabbitRun game;  // shouldn't dispose game? 
 private Player player; //disposed  
-World world;//disposed 
-Box2DDebugRenderer debugRenderer; //disposed 
-Matrix4 debugMatrix; //not disposable 
-String name; 
-Score score;
-Obstacle o; 
-DragAndDropImplement d; 
-InputMultiplexer i; 
+private World world;//disposed 
+private Box2DDebugRenderer debugRenderer; //disposed 
+private Matrix4 debugMatrix; //not disposable 
+private String name; //not 
+private Score score; //not
+private Obstacle o;  //not
+private DragAndDropImplement d; //not
+private InputMultiplexer i;  
+private Skin skin; //disposed
+private Stage stage; //disposed
+private Label label; //no dispose
 
 public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 {
@@ -37,6 +45,7 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
 	game.camera.setToOrtho(false);
 	game.camera.position.set (0, 0, 0);
 	game.camera.update();
+	stage= new Stage (); 
 	world = new World (new Vector2(0f,-9.8f), true);  
 	map = new TmxMapLoader ().load ("LevelMap.tmx"); 
 	renderer = new OrthogonalTiledMapRenderer(map);
@@ -45,6 +54,11 @@ public BiologyLevelGraph (final RabbitRun game, float strtX, float strtY)
     player.changeJump(false);
     debugRenderer = new Box2DDebugRenderer();
     Gdx.input.setInputProcessor(player);  
+    skin = new Skin(Gdx.files.internal("clean-crispy-ui.json"), new TextureAtlas("clean-crispy-ui.atlas"));
+    label = new Label (Float.toString(timeElapsed), skin);
+    label.setPosition(game.camera.position.x+30, 600);
+    label.setFontScale(2f);
+    stage.addActor (label);
     o = new Obstacle ("dryComplaint.png", "cloudyComplaint.png", "sandCompaint.png");
     d= new DragAndDropImplement (game, true, "rainSprite.png", "sunSprite.png", "dirtSprite.png",(int) game.camera.position.x, 50, world, "biology" );
     i = new InputMultiplexer();
@@ -62,12 +76,22 @@ public void show() {
 @Override
 public void render(float delta) {
 
+	int trunc; 
+	double trunk2; 
 	Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    game.camera.position.set(new Vector3(player.getX()+472, player.getY()+128, 0));
+    timeElapsed += delta;
+    trunc = (int) (timeElapsed);
+    trunk2 = trunc/100.0; 
     
+    if (player.getX () < 3250)
+    {
+    game.camera.position.set(new Vector3(player.getX()+472, player.getY()+128, 0));
+    }
+    label.setText(Double.toString(trunk2));
     world.step(1f / 60f, 6, 2);
+    
     game.camera.update();
     
     debugMatrix = game.batch.getProjectionMatrix().cpy().scale(Constants.PIXELS_TO_METERS, Constants.PIXELS_TO_METERS, 0);
@@ -79,7 +103,7 @@ public void render(float delta) {
     d.draw (game.batch);
     o.draw (game.batch);
     game.batch.end();
-
+    stage.draw();
     debugRenderer.render(world, debugMatrix);
 	
 }

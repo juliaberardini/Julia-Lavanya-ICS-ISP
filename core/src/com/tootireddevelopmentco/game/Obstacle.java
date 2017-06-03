@@ -6,11 +6,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Obstacle {
 	
-	Sprite obs1;
-	Sprite obs2;
-	Sprite obs3;
-	Sprite obs4;
-	Sprite obs5; 
+	private Sprite obs1;
+	private Sprite obs2;
+	private Sprite obs3;
+	private Sprite obs4;
+	private Sprite obs5; 
 	private static  Sprite [] fiveSprites;
 	private static int [] shuffleOrder;
 	private static boolean [] shouldDraw; 
@@ -62,7 +62,7 @@ public class Obstacle {
 	{
 		 showObstacles ();
 		 for (int i= 0; i < fiveSprites.length; i++)
-		 {
+		 { 
 			 if (shouldDraw [i])
 		 fiveSprites [i].draw(batch);	
 		 }

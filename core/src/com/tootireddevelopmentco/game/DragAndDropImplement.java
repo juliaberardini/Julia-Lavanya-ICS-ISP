@@ -13,21 +13,20 @@ import com.badlogic.gdx.physics.box2d.World;
 public class DragAndDropImplement implements InputProcessor 
 {
 	final RabbitRun game; 
-	Sprite [] pics; 
-	int num, startY, selected; 
-	int [] startX; 
-	World world; 
+	private Sprite [] pics; 
+	private int num, startY, selected; 
+	private int [] startX; 
 	private boolean validTouch, touching;
 	private String level; 
-	
+	 
 	
 
 	public DragAndDropImplement (final RabbitRun game, boolean three, String fi1, String fi2, String fi3, int startX, int startY, World world, String level)
 	{
 		this.game= game; 
-		this.world= world;
 		this.startY= startY;
 		this.level= level; 
+		
 		if (three)
 		{
 			num=3;
