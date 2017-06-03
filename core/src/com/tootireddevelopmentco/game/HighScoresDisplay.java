@@ -1,30 +1,13 @@
 package com.tootireddevelopmentco.game;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
 
-public class HighScoreDisplay implements Screen {
+public class HighScoresDisplay implements Screen {
 
-	Game rabbitRun; 
-    private Texture highScoreBack; 
-	private List <String> playerString = new ArrayList <String> (); 
-	
-	public HighScoreDisplay ()
-	{
-		PlayerCollection p = new PlayerCollection ();
-		for (int i = 0 ; i < p.displayArr().size(); i++)
-		{
-			playerString.add(p.displayArr().get (i).toString ()); 
-		}
-	}
-	
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
+
 	}
 
 	@Override

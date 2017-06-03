@@ -4,12 +4,6 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 
-
-import aurelienribon.tweenengine.Timeline;
-import aurelienribon.tweenengine.Tween;
-
-import aurelienribon.tweenengine.TweenManager;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -24,6 +18,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
+import aurelienribon.tweenengine.Timeline;
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
 
 public class MainMenu implements Screen {
 
@@ -91,7 +89,7 @@ public class MainMenu implements Screen {
 
 					@Override
 					public void run() {
-						((Game) Gdx.app.getApplicationListener()).setScreen(new HighScoreDisplay());
+						((Game) Gdx.app.getApplicationListener()).setScreen(new HighScoreMenu(game));
 					}
 				})));
 			}

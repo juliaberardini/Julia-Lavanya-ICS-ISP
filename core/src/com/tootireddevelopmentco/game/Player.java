@@ -1,5 +1,7 @@
 package com.tootireddevelopmentco.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -14,8 +16,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class Player implements InputProcessor {
-private String name;
-private Score score; 
+private static String name;
+private static Score score; 
 private boolean canJump = false; 
 Sprite sprite; 
 World world; 
@@ -25,8 +27,6 @@ static int playX;
 public Player (World world, final RabbitRun game,  float startX, float StartY, String name, Score score)
 {
 	this.game= game; 
-	this.name= name;
-	this.score= score; 
 	this.world = world;
 	sprite = new Sprite(new Texture ("bunnySprite.png"));
 	BodyDef bodDef = new BodyDef (); 
@@ -44,6 +44,11 @@ public Player (World world, final RabbitRun game,  float startX, float StartY, S
 	shape.dispose();
 }
 
+public Player (final RabbitRun game, String name, Score score)
+{
+	this.game = game;
+}
+
 public String getName () 
 {
 	return name;
@@ -54,7 +59,7 @@ public Score getScore ()
 	return score; 
 }
 
-public String toString (Player player)
+public static String toString (ArrayList<Player> rabrunPlayers)
 {
 	return name + "     " + score ;
 }
@@ -127,18 +132,15 @@ public void draw(SpriteBatch batch) {
 }
 
 public float getX() {
-	// TODO Auto-generated method stub
 	playX = (int) sprite.getX (); 
 	return sprite.getX();
 }
 
 public float getY() {
-	// TODO Auto-generated method stub
 	return sprite.getY (); 
 }
 
 public Texture getTexture() {
-	// TODO Auto-generated method stub
 	return sprite.getTexture (); 
 }
 

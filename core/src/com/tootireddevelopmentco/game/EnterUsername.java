@@ -18,7 +18,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField; 
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import java.util.ArrayList; 
 
 import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
@@ -39,7 +40,9 @@ public class EnterUsername implements Screen {
 
 	public EnterUsername (final RabbitRun game)
 	{
-		this.game= game; 
+		final ArrayList<Player> rabrunPlayers = new ArrayList<Player>();
+		
+		this.game= game;   
 		stage= new Stage (); 
 		Gdx.input.setInputProcessor(stage);
 		background= new Texture ("background.png");
@@ -54,20 +57,24 @@ public class EnterUsername implements Screen {
 		// creating buttons
 				TextButton continueButton = new TextButton("Continue", skin);
 				continueButton.addListener(new ClickListener() {
-
+ 
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
 						stage.addAction(sequence(moveTo(0, -stage.getHeight(), .5f), run(new Runnable() {
 
 							@Override
 							public void run() {
-								//yoohoo this needs to go in an array dont forget!
-								System.out.println (username.getText()); 
 								((Game) Gdx.app.getApplicationListener()).setScreen(new LevelMenu (game));
 							}
-						})));
+
+
+						}))); 
+						rabrunPlayers.add (new Player(game, username.getText(), new Score (0, null))); 
+						System.out.println(Player.toString (rabrunPlayers));  
 					}
+
 				});
+
 				continueButton.pad(15);
 		
 		//back button
@@ -116,8 +123,6 @@ public class EnterUsername implements Screen {
 		username.setSize (300,40);
 		
 		stage.addActor(username);
-		
-		System.out.println (username.getText()); 
 
 		
 	}
