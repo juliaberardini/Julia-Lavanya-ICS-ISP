@@ -5,6 +5,7 @@ public class Score {
 	private static Integer scoreValue; 
 	private String level; 
 	
+	
 	public Score (int scoreValue, String level)
 	{
 		this.scoreValue= scoreValue;
@@ -15,14 +16,14 @@ public class Score {
 	{
 		this.level= level; 
 	}
-	public int getScoreValue ()
+	public static int getScoreValue ()
 	{
 		return scoreValue;
 	}
 	
-	public static void calculateScore (float timeElapsed)
+	public void calculateScore (int timeElapsed)
 	{
-		scoreValue= (int) (1000- timeElapsed); 
+		scoreValue= (1000- timeElapsed); 
 	}
 	
 	public String getLevel () 
@@ -34,4 +35,10 @@ public class Score {
 	{
 		return scoreValue.toString (); 
 	}
+
+	public String getName() {
+		return EnterUsername.getStr(); 
+	}
+
+
 }

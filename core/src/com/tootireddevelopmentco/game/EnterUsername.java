@@ -34,13 +34,15 @@ public class EnterUsername implements Screen {
 	public final RabbitRun game; 
 	private Stage stage; //disposed
 	private Texture background; 
-	private TextField username; 
+	private static TextField username; 
 	Game rabbitRun;  
+	static private String str = username.getText (); 
+	ArrayList<Player> rabrunPlayers = new ArrayList<Player>();
 
 
 	public EnterUsername (final RabbitRun game)
 	{
-		final ArrayList<Player> rabrunPlayers = new ArrayList<Player>();
+
 		
 		this.game= game;   
 		stage= new Stage (); 
@@ -70,6 +72,7 @@ public class EnterUsername implements Screen {
 
 							
 						})));  
+
 						rabrunPlayers.add (new Player(game, username.getText (), new Score (0, null)));
 						System.out.println (rabrunPlayers);  
 					}
@@ -185,5 +188,14 @@ public class EnterUsername implements Screen {
 		
 	}
 
+
+	public static String getStr() {
+		return str;
+	}
+
+
+	public static void setStr(String str) {
+		EnterUsername.str = str;
+	}
 
 }

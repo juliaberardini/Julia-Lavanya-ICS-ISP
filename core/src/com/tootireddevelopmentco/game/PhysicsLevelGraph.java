@@ -38,7 +38,7 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	private Obstacle o; //not?
 	private Skin skin; //disposed
 	private Stage stage; //disposed
-	private Label label; //no dispose
+	private Label label; //no dispose 
 
 	
 	
@@ -103,9 +103,7 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    
 	    if (player.getX () >= 4000)
 	    {
-	    	((Game) Gdx.app.getApplicationListener()).setScreen (new ReturnToMain (game));
-	    	Score.calculateScore (timeElapsed); 
-
+	    	((Game) Gdx.app.getApplicationListener()).setScreen (new ReturnToMain (game));	  
 	    }
 	    
 	}

@@ -74,7 +74,7 @@ public class HighScoreMenu implements Screen {
 
 							@Override
 							public void run() {
-								((Game) Gdx.app.getApplicationListener()).setScreen(new PhysicsLevelGraph(game, 100, 100));
+								((Game) Gdx.app.getApplicationListener()).setScreen(new HighScoresDisplay (game));
 							}
 						})));
 					}
@@ -90,7 +90,7 @@ public class HighScoreMenu implements Screen {
 
 							@Override
 							public void run() {
-								((Game) Gdx.app.getApplicationListener()).setScreen(new BiologyLevelGraph(game, 100, 100));
+								((Game) Gdx.app.getApplicationListener()).setScreen(new HighScoresDisplay (game));
 							}
 						})));
 					}
@@ -106,7 +106,7 @@ public class HighScoreMenu implements Screen {
 
 							@Override
 							public void run() {
-								((Game) Gdx.app.getApplicationListener()).setScreen(new ChemistryLevelGraph(game, 100, 100));
+								((Game) Gdx.app.getApplicationListener()).setScreen(new HighScoresDisplay (game));
 							}
 						})));
 					}
