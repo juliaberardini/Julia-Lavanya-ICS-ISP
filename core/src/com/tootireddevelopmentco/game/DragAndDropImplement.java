@@ -10,6 +10,22 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The DragAndDropImplement class allows us to implement the code that allows players to drag and drop items throughout multiple levels.
+ * <p><b> Instance variables </b>
+ * <p><b> game </b> (final RabbitRun) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
+ * <p><b> pics </b> (private Sprite []) An array of Sprites that decides whether there are 3 Sprites to be dragged and dropped in the given level or 2.
+ * <p><b> num </b> (private int)  The number of Sprites that need to be drag and dropped in a given level of the game.
+ * <p><b> startY </b> (private int) The starting y-value of the player.
+ * <p><b> selected </b> (private int) The variable that represents the x and y location of the Sprites.
+ * <p><b> startX </b> (private int []) The array that determines the starting x-value of the player.
+ * <p><b> validTouch </b> (private boolean) Whether or not the drag and drop is able to drag onto the the obstacle Sprite
+ * <p><b> touching </b> (private boolean) Whether or not the drag and drop Sprite is touching the obstacle Sprite
+ * <p><b> level </b> (private String) The name of the level that the drag and drop code is implemented in. 
+ */
+
 public class DragAndDropImplement implements InputProcessor 
 {
 	final RabbitRun game; 
@@ -21,6 +37,17 @@ public class DragAndDropImplement implements InputProcessor
 	 
 	
 
+	/**
+	 * @param game (final RabbitRun) The RabbitRun game class with the spriteBatch and music.
+	 * @param three (boolean) The variable that declares whether there are 2 or 3 drag and drop Sprites in a level.
+	 * @param fi1 (String) Determines the texture of the Sprite.
+	 * @param fi2 (String) Determines the texture of the Sprite.
+	 * @param fi3 (String) Determines the texture of the Sprite.
+	 * @param startX (int) The starting x-position of the player.
+	 * @param startY (int) The starting y-position of the player.
+	 * @param world (World)
+	 * @param level (String)
+	 */
 	public DragAndDropImplement (final RabbitRun game, boolean three, String fi1, String fi2, String fi3, int startX, int startY, World world, String level)
 	{
 		this.game= game; 
@@ -49,23 +76,33 @@ public class DragAndDropImplement implements InputProcessor
 			pics [i].setPosition (startX, startY);
 		}
 	}
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#keyDown(int)
+	 */
 	@Override
 	public boolean keyDown(int keycode) {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#keyUp(int)
+	 */
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#keyTyped(char)
+	 */
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#touchDown(int, int, int, int)
+	 */
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		touching=true;
@@ -86,15 +123,20 @@ public class DragAndDropImplement implements InputProcessor
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#touchUp(int, int, int, int)
+	 */
 	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// implement this to check if it is touching the right body 
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) { 
 		touching= false;
 		validTouch = false;
 		pics [selected].setPosition (startX [selected], startY);
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#touchDragged(int, int, int)
+	 */
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		
@@ -122,18 +164,26 @@ public class DragAndDropImplement implements InputProcessor
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#mouseMoved(int, int)
+	 */
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.InputProcessor#scrolled(int)
+	 */
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
+	/**
+	 * @param delta
+	 */
 	public void update (float delta)
 	{
 		if (!touching)
@@ -147,6 +197,9 @@ public class DragAndDropImplement implements InputProcessor
 
 	}
 	
+	/**
+	 * @param batch
+	 */
 	public void draw(SpriteBatch batch) 
 	{		
 		 update(Gdx.graphics.getDeltaTime());

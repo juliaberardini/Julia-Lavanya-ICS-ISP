@@ -1,6 +1,5 @@
 package com.tootireddevelopmentco.game;
 
-import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

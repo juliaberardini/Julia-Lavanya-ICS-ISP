@@ -4,10 +4,27 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import aurelienribon.tweenengine.TweenAccessor;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The ActorAccessor class uses the Universal Tween Engine to implement the TweenAccessor, so that Sprites (icons) can be implemented onto the level screen,
+ * allowing us to move an image or a sprite across the screen.
+ * <p><b> Instance variables </b>
+ * <p><b> Y </b> (private static final) The variable used to draw all graphics to the screen.
+ * <p><b> RGB </b> (private static final) The variable used to determine the RGB colour.
+ * <p><b> ALPHA </b> (private static final) ****TO BE FINISHED****
+ */
+
+
 public class ActorAccessor implements TweenAccessor<Actor> {
-	public static final int Y = 0;
+
+	public static final int Y = 0; 
 	public static final int RGB = 1;
 	public static final int ALPHA = 2;
+
+	/* (non-Javadoc)
+	 * @see aurelienribon.tweenengine.TweenAccessor#getValues(java.lang.Object, int, float[])
+	 */
 	@Override
 	public int getValues(Actor arg0, int arg1, float[] arg2) {
 		switch (arg1) {
@@ -28,6 +45,9 @@ public class ActorAccessor implements TweenAccessor<Actor> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see aurelienribon.tweenengine.TweenAccessor#setValues(java.lang.Object, int, float[])
+	 */
 	@Override
 	public void setValues(Actor arg0, int arg1, float[] arg2) {
 		switch (arg1) {

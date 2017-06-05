@@ -36,7 +36,6 @@ public class EnterUsername implements Screen {
 	private Texture background; 
 	private static TextField username; 
 	Game rabbitRun;  
-	static private String str = username.getText (); 
 	ArrayList<Player> rabrunPlayers = new ArrayList<Player>();
 
 
@@ -189,13 +188,15 @@ public class EnterUsername implements Screen {
 	}
 
 
-	public static String getStr() {
-		return str;
-	}
 
 
 	public static void setStr(String str) {
-		EnterUsername.str = str;
+		str = str;
+	}
+
+
+	public static String getStr() {
+		return username.getText(); 
 	}
 
 }
