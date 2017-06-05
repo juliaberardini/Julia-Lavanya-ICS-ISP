@@ -32,8 +32,8 @@ public class Score {
 	{
 		this.level= level; 
 	}
-	/**
-	 * @return
+	/**This method returns the user's score
+	 * @return scoreValue (int) The user's score
 	 */
 	public static int getScoreValue ()
 	{

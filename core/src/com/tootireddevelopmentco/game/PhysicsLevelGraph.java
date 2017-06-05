@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 /**
  * @author Lavanya Sinha, Julia Berardini
  * @version 4.0_04.06.2017
- * The ChemistryLevelGraph class implements the background images into the background of the screen for the chemistry level of RabbitRun.
+ * The PhysicsLevelGraph class implements the background images into the background of the screen for the physics level of RabbitRun.
  * <p><b> Instance variables </b>
  * <p><b> map </b> (private TiledMap) The variable used for png that is the background map.
  * <p><b> timeElapsed </b> (private float) The timer variable.

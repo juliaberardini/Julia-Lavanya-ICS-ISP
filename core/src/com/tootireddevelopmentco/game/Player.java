@@ -17,7 +17,7 @@ import com.badlogic.gdx.physics.box2d.World;
 /**
  * @author Lavanya Sinha, Julia Berardini
  * @version 4.0_04.06.2017
- * The ChemistryLevelGraph class implements the background images into the background of the screen for the chemistry level of RabbitRun.
+ * The Player class sets up the Player.
  * <p><b> Instance variables </b>
  * <p><b> name </b> (private String) The name of the player
  * <p><b> score </b> (private Score) The score of the player
@@ -230,8 +230,8 @@ public float getY() {
 	return sprite.getY (); 
 }
 
-/**
- * @return
+/** This method returns the texture of the Sprite
+ * @return sprite.getTexture (Sprite) The texture of the Sprite
  */
 public Texture getTexture() {
 	return sprite.getTexture (); 

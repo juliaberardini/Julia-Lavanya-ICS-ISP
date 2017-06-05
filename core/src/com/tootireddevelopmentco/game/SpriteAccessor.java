@@ -7,7 +7,7 @@ import aurelienribon.tweenengine.TweenAccessor;
 /**
  * @author Lavanya Sinha, Julia Berardini
  * @version 4.0_04.06.2017
- * The Splash class displays the splash screen.
+ * The SpriteAccessor class allows us to manipulate Sprites..
  * <p><b> Instance variables </b>
  * <p><b> ALPHA </b> (public static final int) Represents the colours in the Sprites
 

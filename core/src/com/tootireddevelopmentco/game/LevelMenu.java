@@ -36,11 +36,11 @@ import aurelienribon.tweenengine.TweenManager;
  */
 
 public class LevelMenu implements Screen {
-	private Skin skin;  //disposed 
-	private Table table;  //not disposable
+	private Skin skin; 
+	private Table table;  
 	private TweenManager tweenManager; 
 	public final RabbitRun game; 
-	private Stage stage; //disposed
+	private Stage stage; 
 	private Texture background; 
 	
 	/**The constructor sets up the screen for the instructions for Level 3.
