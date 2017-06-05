@@ -64,7 +64,7 @@ public class ChemistryLevelGraph extends Game implements Screen {
 	private Label label; 
 
 	
-	/**
+	/** The constructor sets up all the Sprites and Maps to the background of the screen.
 	 * @param game (final RabbitRun) The RabbitRun game class with the spriteBatch and music.
 	 * @param strtX (float) The starting x-position of the user.
 	 * @param strtY (float) The starting y-position of the user. 

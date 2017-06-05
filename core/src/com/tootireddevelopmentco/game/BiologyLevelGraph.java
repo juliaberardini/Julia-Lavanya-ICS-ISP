@@ -64,7 +64,7 @@ public class BiologyLevelGraph extends ApplicationAdapter implements Screen {
 	private Stage stage; 
 	private Label label; 
 
-	/**
+	/** The constructor adds all the Sprites and Maps to the world and fixes the camera angle.
 	 * @param game (final RabbitRun) The RabbitRun game class with the spriteBatch and music.
 	 * @param strtX (float) The starting x-position of the user.
 	 * @param strtY (float) The starting y-position of the user. 

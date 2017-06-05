@@ -26,19 +26,38 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The EnterUsername class sets up the screen and allows the user to enter a username.
+ * <p><b> Instance variables </b>
+ * <p><b> skin </b> (private Skin) The variable that stores resources for UI widgets to use (texture regions, ninepatches, fonts, colors, etc)
+ * <p><b> table </b> (private Table) The variable that makes an organised table to display buttons
+ * <p><b> tweenManager </b> (private TweenManager)  Allows interpolation of every attributes from any object
+ * <p><b> game </b> (private RabbitRun) Reference to the game
+ * <p><b> stage </b> (private Stage) A 2D scene graph containing hierarchies of actors.
+ * <p><b> background </b> (private Texture) The background image 
+ * <p><b> username </b> (private static TextField) The player's username
+ * <p><b> rabbitRun </b> (Game) The game
+ * <p><b> rabrunPlayers </b> (ArrayList) The array list of players.
+ */
+
 public class EnterUsername implements Screen {
-	
-	private Skin skin;  //disposed 
-	private Table table;  //not disposable
+
+	private Skin skin;  
+	private Table table;  
 	private TweenManager tweenManager; 
 	public final RabbitRun game; 
-	private Stage stage; //disposed
+	private Stage stage;
 	private Texture background; 
 	private static TextField username; 
-	Game rabbitRun;  
+	Game rabbitRun; 
 	ArrayList<Player> rabrunPlayers = new ArrayList<Player>();
 
 
+	/**
+	 * @param game (final RabbitRun) reference to the game
+	 */
 	public EnterUsername (final RabbitRun game)
 	{
 
@@ -132,36 +151,54 @@ public class EnterUsername implements Screen {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#show()
+	 */
 	@Override
 	public void show() {
 		
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#resize(int, int)
+	 */
 	@Override
 	public void resize(int width, int height) {
 		
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#pause()
+	 */
 	@Override
 	public void pause() {
 		
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#resume()
+	 */
 	@Override
 	public void resume() {
 		
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#hide()
+	 */
 	@Override
 	public void hide() {
 		dispose ();
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#dispose()
+	 */
 	@Override
 	public void dispose() {
 		stage.dispose();
@@ -171,6 +208,9 @@ public class EnterUsername implements Screen {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#render(float)
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -187,14 +227,9 @@ public class EnterUsername implements Screen {
 		
 	}
 
-
-
-
-	public static void setStr(String str) {
-		str = str;
-	}
-
-
+	/**
+	 * @return the text in the username textbox
+	 */
 	public static String getStr() {
 		return username.getText(); 
 	}

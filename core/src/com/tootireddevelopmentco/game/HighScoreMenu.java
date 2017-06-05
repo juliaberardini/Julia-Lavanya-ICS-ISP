@@ -19,10 +19,21 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The ChemistryLevelGraph class implements the background images into the background of the screen for the chemistry level of RabbitRun.
+ * <p><b> Instance variables </b>
+ * <p><b> stage </b> (private stage) The variable that holds a 2D scene graph containing hierarchies of actors.
+ * <p><b> skin </b> (private Skin) The variable that stores resources such as textures, fonts, colors, etc.
+ * <p><b> table </b> (private Table) The variable that auto-positions buttons into an organized table.
+ * <p><b> tweenManager </b> (private TweenManager) Collision detector between the world, game and map.
+ * <p><b> game </b> (public final RabbitRun) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
+ * <p><b> background </b> (private Texture) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
+ */
 public class HighScoreMenu implements Screen {
 
 	private Stage stage;
@@ -33,6 +44,9 @@ public class HighScoreMenu implements Screen {
 	private Texture background; 
 	
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#render(float)
+	 */
 	@Override
 	public void render (float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -47,6 +61,9 @@ public class HighScoreMenu implements Screen {
 		tweenManager.update(delta);
 	}
 	
+	/**
+	 * @param game
+	 */
 	public HighScoreMenu (final RabbitRun game)
 	{
 		this.game= game; 
@@ -143,31 +160,49 @@ public class HighScoreMenu implements Screen {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#resize(int, int)
+	 */
 	@Override
 	public void resize(int width, int height) {
 		table.invalidateHierarchy (); 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#show()
+	 */
 	@Override
 	public void show() {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#hide()
+	 */
 	@Override
 	public void hide() {
 		dispose();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#pause()
+	 */
 	@Override
 	public void pause() {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#resume()
+	 */
 	@Override
 	public void resume() {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#dispose()
+	 */
 	@Override
 	public void dispose() {
 		stage.dispose();

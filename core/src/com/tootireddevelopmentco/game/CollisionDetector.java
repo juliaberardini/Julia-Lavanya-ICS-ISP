@@ -37,7 +37,7 @@ public class CollisionDetector extends ApplicationAdapter {
 	Body ground; 
 	
 	
-	/**
+	/**This constructor sets up the background and icons of the level.
 	 * @param world (World) The variable that represents the World (physical entities, simulation etc). 
 	 * @param filename (String) The variable for the file that the map png is stored in.
 	 * @param game (final RabbitRun) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
@@ -45,15 +45,22 @@ public class CollisionDetector extends ApplicationAdapter {
 	/*
 	 * LOCAL VARIABLES
 	 * wall (MapObjects) The ground layer of the background
-	 * obstacles (MapObjects) The obstacle layer in the screen
-	 * groundDef (BodyDef)
-	 * m2 
-	 * shape2
+	 * obstacles (MapObject) The obstacle layer in the screen
+	 * groundDef (BodyDef) Holds all the data needed to create a non-moving Body.
+	 * shape (Shape) Used for collision detection.
+	 * m (MapObject) Map object with basic attributes like name, opacity, color.
+	 * fix (FixtureDef) Creates fixture in the ground.
+	 * i (int) Loop variable.
+	 * collDef (BodyDef) Holds all the data needed to create a non-moving Body.
+	 * m2 (MapObject) Map object with basic attributes like name, opacity, color.
+	 * shape2 (Shape) Used for collision detection.
+	 * 
 	 * CONDITIONAL STATEMENTS
 	 * 1- Detects collisions using the TileMap
+	 * 2- Sets up Coordinates of TileMap
 	 * 
 	 * LOOPS
-	 * A- 
+	 * A- Loops for the amount of obstacles 
 	 */
 	public CollisionDetector (World world, String filename, final RabbitRun game)
 	{
@@ -114,10 +121,14 @@ public class CollisionDetector extends ApplicationAdapter {
             shape2.dispose();
 		}
 	}
-		/**
-		 * @param obj
-		 * @return
-		 */
+	/** This method makes the border body for the boundaries of the map
+	 * @param obj (RectangleMapObject) A rectangle shaped map object
+	 * @return poly (PolygonShape) A polygon shaped map object
+	 */
+	/*LOCAL VARIABLES
+	 * rect (Rectangle) A rectangle shaped map object.
+	 * size (Vector2) Variable used to encapsulate a 2D vector.
+	 */
 		private PolygonShape getRectProp (RectangleMapObject obj)
 		{
 			    Rectangle rect = (obj.getRectangle ());
@@ -129,15 +140,24 @@ public class CollisionDetector extends ApplicationAdapter {
 		                size,0.0f);
 				return poly;
 		}
-		  /**
-		 * @param line
-		 * @return
+		
+		 /** This method also makes the border body for the boundaries of the map
+		 * @param line (PolyLineMapObject) A polyline shaped map object
+		 * @return chain (ChainShape) A chain of complex polygon shaped map objects
+		 */
+		/*LOCAL VARIABLES
+		 * vertices [] (float) An array of the vertices in a shape
+		 * vertices2 [] (Vector2) An array of 2D vectors
+		 * 
+		 * LOOPS
+		 * A- converts the vertices to pixels
 		 */
 		private ChainShape getChain (PolylineMapObject line)
 		  {
 			  ChainShape chain = new ChainShape();
 			  float[] vertices = line.getPolyline().getTransformedVertices();
 		      Vector2[] vertices2 = new Vector2[vertices.length / 2];
+		      //A
 		        for (int i = 0; i < vertices.length / 2; i++) 
 		        {
 		            vertices2[i] = new Vector2();
@@ -150,12 +170,13 @@ public class CollisionDetector extends ApplicationAdapter {
 		    }
 		  
 		/**
-		 * @return
+		 * @return ground 
 		 */
 		public Body getGround ()
 		{
 			return ground; 
 		}
+		
 		/* (non-Javadoc)
 		 * @see com.badlogic.gdx.ApplicationAdapter#dispose()
 		 */
