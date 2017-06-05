@@ -51,6 +51,9 @@ public class DragAndDropImplement implements InputProcessor
 	/* CONDITIONAL STATEMENTS
 	 * 1- determines if there are 2 Sprites to drag and drop or 3
 	 * 2- Adds the image of the Sprite to the Sprite depending on whether there are 2 Sprites to drag and drop or 3
+	 * 
+	 * LOOPS
+	 * A- Implements the drag and drop into the pictures
 	 */
 	public DragAndDropImplement (final RabbitRun game, boolean three, String fi1, String fi2, String fi3, int startX, int startY, World world, String level)
 	{
@@ -75,6 +78,7 @@ public class DragAndDropImplement implements InputProcessor
 		{
 		pics [2] = new Sprite(new Texture (fi3));
 		}
+		//A
 		for (int i = 0; i < pics.length; i++)
 		{
 			this.startX [i] = startX + 200*(i-1);
@@ -232,7 +236,7 @@ public class DragAndDropImplement implements InputProcessor
 
 	}
 	
-	/** This methods draws the collision Sprites on the screen
+	/** This method draws the collision Sprites on the screen
 	 * @param batch (SpriteBatch) The group of collision Sprites
 	 */
 	/*LOCAL VARIABLES

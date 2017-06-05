@@ -26,6 +26,21 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenManager;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The QuitScreen class sets up the screen and GUI for the goodbye screen.
+ * <p><b> Instance variables </b>
+ * <p><b> skin </b> (private Skin) The variable that stores resources for UI widgets to use (texture regions, ninepatches, fonts, colors, etc)
+ * <p><b> table </b> (private Table) The variable that makes an organised table to display buttons
+ * <p><b> tweenManager </b> (private TweenManager)  Allows interpolation of every attributes from any object
+ * <p><b> game </b> (private RabbitRun) Reference to the game
+ * <p><b> stage </b> (private Stage) A 2D scene graph containing hierarchies of actors.
+ * <p><b> background </b> (private Texture) The background image 
+ * <p><b> goodBye </b> (private Texture) The goodbye image 
+ * <p><b> rabbitRun </b> (Game) The variable that refers to the game 
+ */
+
 public class QuitScreen implements Screen {
 	private Skin skin;  //disposed 
 	private Table table;  //not disposable
@@ -35,6 +50,9 @@ public class QuitScreen implements Screen {
 	private Texture background, goodBye; 
 	Game rabbitRun; 
 	
+	/** The constructor sets up the quit screen graphics and GUI
+	 * @param game (final RabbitRun) This variable references the game
+	 */
 	public QuitScreen (final RabbitRun game)
 	{
 		this.game= game; 
@@ -112,12 +130,18 @@ public class QuitScreen implements Screen {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#show()
+	 */
 	@Override
 	public void show() {
 		
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#render(float)
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -134,30 +158,45 @@ public class QuitScreen implements Screen {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#resize(int, int)
+	 */
 	@Override
 	public void resize(int width, int height) {
 		table.invalidateHierarchy (); 
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#pause()
+	 */
 	@Override
 	public void pause() {
 		
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#resume()
+	 */
 	@Override
 	public void resume() {
 		
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#hide()
+	 */
 	@Override
 	public void hide() {
 		dispose (); 
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#dispose()
+	 */
 	@Override
 	public void dispose() {
 		stage.dispose();

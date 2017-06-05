@@ -23,15 +23,32 @@ import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The Level1Instruct class sets up the instructions for Level 1, Garden Jump.
+ * <p><b> Instance variables </b>
+ * <p><b> skin </b> (private Skin) The variable that stores resources for UI widgets to use (texture regions, ninepatches, fonts, colors, etc)
+ * <p><b> table </b> (private Table) The variable that makes an organised table to display buttons
+ * <p><b> tweenManager </b> (private TweenManager)  Allows interpolation of every attributes from any object
+ * <p><b> game </b> (private RabbitRun) Reference to the game
+ * <p><b> stage </b> (private Stage) A 2D scene graph containing hierarchies of actors.
+ * <p><b> background </b> (private Texture) The background image 
+ * <p><b> instructions </b> (private Texture) The instructions image 
+ */
+
 public class Level1Instruct implements Screen {
 	
-		private Skin skin;  //disposed 
-		private Table table;  //not disposable
+		private Skin skin;  
+		private Table table;  
 		private TweenManager tweenManager; 
 		public final RabbitRun game; 
-		private Stage stage; //disposed
+		private Stage stage; 
 		private Texture background, instructions; 
 		
+		/** The constructor sets up the screen for the instructions for Level 1.
+		 * @param game (final RabbitRun) The variable the represents the game. 
+		 */
 		public Level1Instruct (final RabbitRun game)
 		{
 			this.game= game; 
@@ -60,7 +77,7 @@ public class Level1Instruct implements Screen {
 						}
 					})));
 				}
-			});
+			}); 
 			back.pad(15);
 
 			//display
@@ -87,11 +104,17 @@ public class Level1Instruct implements Screen {
 			
 			
 		}
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#show()
+		 */
 		@Override
 		public void show() {
 		
 		}
 
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#render(float)
+		 */
 		@Override
 		public void render(float delta) {
 			Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -108,29 +131,44 @@ public class Level1Instruct implements Screen {
 
 		}
 
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#resize(int, int)
+		 */
 		@Override
 		public void resize(int width, int height) {	
 			table.invalidateHierarchy (); 
 		}
 
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#pause()
+		 */
 		@Override
 		public void pause() {
 			
 
 		}
 
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#resume()
+		 */
 		@Override
 		public void resume() {
 		
 
 		}
 
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#hide()
+		 */
 		@Override
 		public void hide() {
 			dispose (); 
 
 		}
 
+		/* (non-Javadoc)
+		 * @see com.badlogic.gdx.Screen#dispose()
+		 */
 		@Override
 		public void dispose() {
 			stage.dispose();

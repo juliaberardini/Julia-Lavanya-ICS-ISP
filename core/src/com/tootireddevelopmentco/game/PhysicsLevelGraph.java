@@ -20,28 +20,54 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The ChemistryLevelGraph class implements the background images into the background of the screen for the chemistry level of RabbitRun.
+ * <p><b> Instance variables </b>
+ * <p><b> map </b> (private TiledMap) The variable used for png that is the background map.
+ * <p><b> timeElapsed </b> (private float) The timer variable.
+ * <p><b> renderer </b> (private TileMapRenderer) Renders variable 'map' as the background of the game. 
+ * <p><b> detector </b> (public static CollisionDetector) Collision detector between the world, game and map.
+ * <p><b> game </b> (public final) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
+ * <p><b> player </b> (private Player) The variable used to represent the player. 
+ * <p><b> world </b> (private World) The variable that represents the World (physical entities, simulation etc). 
+ * <p><b> debugRenderer </b> (private Box2DDebugRenderer) The variable that creates the debugger box around the sprites.
+ * <p><b> debugMatrix </b> (private Matrix4) Variable that encapsulates a column major 4 by 4 matrix.
+ * <p><b> name </b> (private String) String variable that holds the user's name
+ * <p><b> score </b> (private Score) Score variable that holds the user's score and level.
+ * <p><b> o </b> (private Obstacle) The variable that creates an Obstacle in the game. 
+ * <p><b> skin </b> (private Skin) The variable that contains the textures, fonts, colours etc. 
+ * <p><b> stage </b> (private Stage) The variable that draws the background.
+ * <p><b> label </b> (private Label) Variable that creates a text label. 
+ */
 
 
 public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	
-	private TiledMap map;  //disposed
-	private float timeElapsed = 0; //not disposable
-	private TiledMapRenderer renderer; //not disposable 
-	public static CollisionDetector detector; //not disposable 
-	public final RabbitRun game;  // shouldn't dispose game? 
-	private Player player; //disposed  
-	private World world;//disposed 
-	private Box2DDebugRenderer debugRenderer; //disposed 
-	private Matrix4 debugMatrix; //not disposable 
-	private String name; //not
-	private Score score;//not
-	private Obstacle o; //not?
-	private Skin skin; //disposed
-	private Stage stage; //disposed
-	private Label label; //no dispose 
+	private TiledMap map;  
+	private float timeElapsed = 0; 
+	private TiledMapRenderer renderer; 
+	public static CollisionDetector detector;
+	public final RabbitRun game;  
+	private Player player;   
+	private World world;
+	private Box2DDebugRenderer debugRenderer; 
+	private Matrix4 debugMatrix; 
+	private String name;
+	private Score score;
+	private Obstacle o; 
+	private Skin skin; 
+	private Stage stage; 
+	private Label label; 
 
 	
 	
+	/** The constructor sets up all the Sprites and Maps to the background of the screen.
+	 * @param game (final RabbitRun) The RabbitRun game class with the spriteBatch and music.
+	 * @param strtX (float) The starting x-position of the user.
+	 * @param strtY (float) The starting y-position of the user. 
+	 */
 	public PhysicsLevelGraph (final RabbitRun game, float strtX, float strtY)
 	{
 		this.game=game; 
@@ -64,11 +90,27 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    label.setFontScale(2f);
 	    stage.addActor (label);
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#show()
+	 */
 	@Override
 	public void show() 
 	{
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#render(float)
+	 * trunc (int) This variable truncates the timeElapsed variable to an int. 
+	 * trunk2 (int) This variable divides trunc by 100
+	 * 
+	 * Conditional Statement 1: this makes sure that no black space is shown around the screen when the player jumps. 
+	 * Conditional Statement 2: this makes sure that when the player reaches the coordinates of the house, it switches screens,
+	 * informing the player that they have completed the level and allowing them to return to the main menu. 
+	 * Conditional Statement 2: this makes sure that when the player reaches the coordinates of the house, it switches screens,
+	 * informing the player that they have completed the level and allowing them to return to the main menu. 
+	 */
 	@Override
 	public void render(float delta) 
 	{
@@ -108,11 +150,17 @@ public class PhysicsLevelGraph extends ApplicationAdapter implements Screen {
 	    
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.Screen#hide()
+	 */
 	@Override
 	public void hide() {
 		dispose (); 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.badlogic.gdx.ApplicationAdapter#dispose()
+	 */
 	@Override
 	public void dispose () 
 	{

@@ -169,8 +169,8 @@ public class CollisionDetector extends ApplicationAdapter {
 		        return chain; 
 		    }
 		  
-		/**
-		 * @return ground 
+		/** This method returns the ground of the Sprites.
+		 * @return ground (Body) returns the ground that the Sprites are on. 
 		 */
 		public Body getGround ()
 		{

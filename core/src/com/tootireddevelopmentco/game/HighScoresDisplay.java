@@ -10,13 +10,26 @@ import javax.print.attribute.*;
 import javax.print.attribute.standard.Copies;
 import javax.print.event.*;
 
+//this is gonna be changed so comment it later bud
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The HighScoresDisplay class displays the high scores for each level. 
+ * <p><b> Instance variables </b>
+ * <p><b> scores </b> (private stage) The variable that holds a 2D scene graph containing hierarchies of actors.
+ * <p><b> sc </b> (private Skin) The variable that stores resources such as textures, fonts, colors, etc.
+ * <p><b> SCORES_SIZE </b> (private Table) The variable that auto-positions buttons into an organized table.
+ * <p><b> reader </b> (private TweenManager) The variable that manages all the static animations.
+ * <p><b> header </b> (public final RabbitRun) The variable that represents the game.
+ */
+
 public class HighScoresDisplay implements Screen {
-	
+
 	private ArrayList<Score> scores;
-	  private ScoreComparator sc;
-	  static final int SCORES_SIZE = 10;
-	  private BufferedReader reader;
-	  static final String header = "RabbitRun High Scores";
+	private ScoreComparator sc;
+	static final int SCORES_SIZE = 10;
+	private BufferedReader reader;
+	static final String header = "RabbitRun High Scores";
 	  
 	public HighScoresDisplay (final RabbitRun game)
 	{

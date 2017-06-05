@@ -25,14 +25,14 @@ import aurelienribon.tweenengine.TweenManager;
 /**
  * @author Lavanya Sinha, Julia Berardini
  * @version 4.0_04.06.2017
- * The ChemistryLevelGraph class implements the background images into the background of the screen for the chemistry level of RabbitRun.
+ * The HighScoreMenu class allows the user to choose which level they want to view high scores for.
  * <p><b> Instance variables </b>
  * <p><b> stage </b> (private stage) The variable that holds a 2D scene graph containing hierarchies of actors.
  * <p><b> skin </b> (private Skin) The variable that stores resources such as textures, fonts, colors, etc.
  * <p><b> table </b> (private Table) The variable that auto-positions buttons into an organized table.
- * <p><b> tweenManager </b> (private TweenManager) Collision detector between the world, game and map.
- * <p><b> game </b> (public final RabbitRun) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
- * <p><b> background </b> (private Texture) The variable that represents the music, spriteBatch and camera within the RabbitRun game class.
+ * <p><b> tweenManager </b> (private TweenManager) The variable that manages all the static animations.
+ * <p><b> game </b> (public final RabbitRun) The variable that represents the game.
+ * <p><b> background </b> (private Texture) The variable that represents the background images in the screen. 
  */
 public class HighScoreMenu implements Screen {
 
@@ -61,8 +61,8 @@ public class HighScoreMenu implements Screen {
 		tweenManager.update(delta);
 	}
 	
-	/**
-	 * @param game
+	/** The constructor sets up all the labels, buttons and backgrounds associated with the screen.
+	 * @param game (final RabbitRun) The variable that represents the game. 
 	 */
 	public HighScoreMenu (final RabbitRun game)
 	{

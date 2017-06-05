@@ -227,7 +227,7 @@ public class EnterUsername implements Screen {
 		
 	}
 
-	/**
+	/** This method returns the text in the username textbox. 
 	 * @return the text in the username textbox
 	 */
 	public static String getStr() {

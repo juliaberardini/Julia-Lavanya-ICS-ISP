@@ -1,20 +1,20 @@
 package com.tootireddevelopmentco.game;
 
+/**
+ * @author Lavanya Sinha, Julia Berardini
+ * @version 4.0_04.06.2017
+ * The GameLogic class identifies the correct answers in the drag and drop elements of the chemistry and bio level.
+ * <p><b> Instance variables </b>
+ * <p><b> level </b> (private String) The name of the level that the user is on.
+ * <p><b> correctChem [][] </b> (2D int array) The correct matching of the drag and drop element to the obstacle in the chemistry level.
+ * <p><b> correctBio [][] </b> (2D int array) The correct matching of the drag and drop element to the obstacle in the biology level.
+ */
+
 public class GameLogic {
-	
-	/**
-	 * @author Lavanya Sinha, Julia Berardini
-	 * @version 4.0_04.06.2017
-	 * The GameLogic class identifies the correct answers in the drag and drop elements of the chemistry and bio level.
-	 * <p><b> Instance variables </b>
-	 * <p><b> level </b> (private String) The name of the level that the user is on.
-	 * <p><b> correctChem [][] </b> (2D int array) The correct matching of the drag and drop element to the obstacle in the chemistry level.
-	 * <p><b> correctBio [][] </b> (2D int array) The correct matching of the drag and drop element to the obstacle in the biology level.
-	 */
-	
 	String level; 
 	private int [] [] correctChem, correctBio; 
-	/**
+	
+	/** The constructor identifies the level and sets up the array for the correct answers.
 	 * @param level (String) The level that the user is on.
 	 */
 	public GameLogic (String level)
